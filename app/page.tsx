@@ -28,13 +28,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
    />
    
    </div>
-        <div className="absolute inset-0 z-10">
+     {/* Desktop */}
+        <div className="absolute inset-0 z-10 hidden lg:block">
      <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]}/>
      </div>
+  {/* Mobile */}
+<div className="relative z-10 block lg:hidden h-[600px] w-full">
+  <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
+</div>
       
        <div className="relative z-20">
-      <div className="col-span-6 flex flex-col justify-center pl-[100px] mt-72">
-        <div className="grid grid-cols-12 h-full">
+  <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-72">
+        <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
           <div className="col-span-6 flex flex-col justify-center h-full">
             
 
@@ -61,23 +66,23 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
             <div>
               <div className="flex flex-col items-start">
-  <SplitText
-    text="Hello, I'm DAFFA RAVI FERDIANSYAH"
-    className="text-6xl font-semibold text-left"
-    delay={50}
-    duration={1.25}
-    ease="power3.out"
-    splitType="chars"
-    from={{ opacity: 0, y: 40 }}
-    to={{ opacity: 1, y: 0 }}
-    threshold={0.1}
-    rootMargin="-100px"
-    textAlign="left"
-  />
+ <SplitText
+  text="Hello, I'm DAFFA RAVI FERDIANSYAH"
+  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-left leading-tight"
+  delay={50}
+  duration={1.25}
+  ease="power3.out"
+  splitType="chars"
+  from={{ opacity: 0, y: 40 }}
+  to={{ opacity: 1, y: 0 }}
+  threshold={0.1}
+  rootMargin="-100px"
+  textAlign="left"
+/>
 
   <SplitText
     text="Full Stack Developer"
-    className="text-6xl font-semibold text-left text-[#696969] mb-6"
+    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-left text-[#696969] mb-6 leading-tight"
     delay={50}
     duration={1.25}
     ease="power3.out"
@@ -97,11 +102,11 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
                 delay={50}
                 animateBy="words"
                 direction="top"
-                className="text-2xl mb-8"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl leading-7 md:leading-9 mb-8"
               />
             </div>
           <div></div>
-          <div className="col-span-6"></div>
+          <div className="lg:col-span-6"></div>
           </div>
           </div>
           
@@ -113,13 +118,13 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
     
      <section
   id="about"
-  className="min-h-screen bg-[#0F172A] flex items-center px-24"
+  className="min-h-screen bg-[#0F172A] flex items-center px-6 md:px-24"
 >
-  <div className="grid grid-cols-12 gap-16 w-full">
+  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 w-full">
 
     {/* Left */}
-    <div className="col-span-5 flex justify-center items-center">
-      <div className="w-[420px] h-[520px] rounded-3xl overflow-hidden border border-[#2F293A]">
+    <div className="lg:col-span-5 flex justify-center items-center">
+      <div className="w-full max-w-[420px] rounded-3xl overflow-hidden border border-[#2F293A]">
   <Image
     src="/assets/lanyard/about/daffa.jpeg"
     alt="Daffa Ravi Ferdiansyah"
@@ -131,20 +136,20 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
     </div>
 
     {/* Right */}
-    <div className="col-span-7 flex flex-col justify-center">
+    <div className="lg:col-span-7 flex flex-col justify-center">
 
       <p className="text-[#696969] uppercase tracking-[6px] font-semibold">
         About Me
       </p>
 
-      <h2 className="text-6xl font-bold text-white mt-4 leading-tight">
+      <h2 className="text-4xl md:text-6xl font-bold text-white mt-4 leading-tight">
         Passionate About
         <br />
         Building Digital
         <span className="text-[#9CA3AF]"> Experiences.</span>
       </h2>
 
-      <p className="text-gray-400 text-xl leading-9 mt-8">
+      <p className="text-gray-400 text-base md:text-xl leading-8 md:leading-9mt-8">
         Hello! I'm <span className="text-white font-semibold">Daffa Ravi Ferdiansyah</span>,
         a Full Stack Developer who enjoys creating modern websites and web
         applications with clean, responsive, and user-friendly interfaces.
@@ -159,7 +164,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
         opportunity for me to learn, improve, and build something meaningful.
       </p>
 
-      <div className="flex gap-12 mt-12">
+      <div className="flex flex-wrap gap-8 mt-12">
 
         <div>
           <h3 className="text-5xl font-bold text-white">10+</h3>
@@ -184,7 +189,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 </section>
       <section
   id="skills"
-  className="min-h-screen bg-[#111827] px-24 py-24"
+  className="min-h-screen bg-[#111827] px-6 md:px-24 py-20"
 >
   <div className="max-w-7xl mx-auto">
 
@@ -203,7 +208,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       skills.
     </p>
 
-    <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
 
       {/* Frontend */}
       <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition-all duration-300">
@@ -297,7 +302,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
       <section
   id="projects"
-  className="min-h-screen bg-[#0F172A] px-24 py-24"
+  className="px-6 md:px-24 py-20 px-6 md:px-24 py-20"
 >
   <div className="max-w-7xl mx-auto">
 
@@ -315,7 +320,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       experiences.
     </p>
 
-    <div className="grid lg:grid-cols-2 gap-10 mt-20">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-20">
 
       {/* Project 1 */}
       <div className="bg-[#19222D] border border-[#2F293A] rounded-3xl overflow-hidden hover:border-white transition duration-300">
@@ -448,7 +453,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
       <section
   id="contact"
-  className="min-h-screen bg-[#111827] px-24 py-24 flex items-center"
+  className="min-h-screen bg-[#111827] px-6 md:px-24 py-20 flex items-center"
 >
   <div className="max-w-7xl mx-auto w-full">
 
@@ -512,9 +517,9 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
   </div>
     </div> {/* grid */}
 
-    <div className="border-t border-[#2F293A] mt-20 pt-8 flex justify-between items-center">
+    <div className="border-t border-[#2F293A] mt-20 pt-8 flex flex-col md:flex-row gap-4 justify-between items-center">
       {/* Footer */}
-      <div className="border-t border-[#2F293A] mt-20 pt-8 flex justify-between items-center">
+      <div className="border-t border-[#2F293A] mt-20 pt-8 flex flex-col md:flex-row gap-4 justify-between items-center">
         <p className="text-gray-500">
           © 2026 Daffa Ravi Ferdiansyah. All Rights Reserved.
         </p>
@@ -530,7 +535,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
      <section
   id="certificates"
-  className="min-h-screen bg-[#0F172A] px-24 py-24"
+  className="min-h-screen bg-[#0F172A] px-6 md:px-24 py-20"
 >
   <div className="max-w-7xl mx-auto">
 
@@ -547,7 +552,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       development, programming, and emerging technologies.
     </p>
 
-    <div className="grid md:grid-cols-3 gap-8 mt-20">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
 
       {/* Certificate 1 */}
       <div className="bg-[#19222D] rounded-3xl border border-[#2F293A] overflow-hidden hover:border-white transition duration-300">

@@ -76,12 +76,12 @@ export default function Lanyard({
    <div className="w-full h-full">
       <Canvas
         camera={{ position, fov }}
-        dpr={[1, isMobile ? 1.5 : 2]}
+        dpr={[1, isMobile ? 1.5 : 1.5]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <primitive object={new THREE.AmbientLight(0xffffff, Math.PI)} />
-        <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
+        <Physics gravity={gravity} timeStep={isMobile ? 1 / 60 : 1 / 60}>
           <Band
             isMobile={isMobile}
             frontImage={frontImage}
@@ -318,6 +318,7 @@ function Band({
               drag(false);
             }}
             onPointerDown={(e: ThreeEvent<PointerEvent>) => {
+               console.log("DRAG START");
               (e.target as Element).setPointerCapture(e.pointerId);
               drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
             }}
