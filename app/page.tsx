@@ -389,7 +389,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
        <div className="h-64 overflow-hidden">
   <img 
-    src="assets/lanyard/projects/screenshot.png"
+    src="assets/lanyard/projects/dave.png"
     alt="Nama Project"
     className="w-full h-full object-cover hover:scale-105 transition duration-500"
   />
