@@ -34,7 +34,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
      </div>
   {/* Mobile */}
 <div className="relative z-10 block lg:hidden h-[600px] w-full">
-  <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
+  <Lanyard position={[3, 0, 12]} gravity={[0, -40, 0]} />
 </div>
       
        <div className="relative z-20">

@@ -54,8 +54,8 @@ interface LanyardProps {
 }
 
 export default function Lanyard({
-  position = [0, 0, 30],
-  gravity = [0, -40, 0],
+  position = [0, 0, 12],
+  gravity = [0, -15, 0],
   fov = 20,
   transparent = true,
   frontImage = null,
@@ -76,7 +76,8 @@ export default function Lanyard({
    <div className="w-full h-full">
       <Canvas
         camera={{ position, fov }}
-        dpr={[1, isMobile ? 1.5 : 1.5]}
+         dpr={[1, 1]}
+  frameloop="always"
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
@@ -162,22 +163,25 @@ function Band({
   const ang = new THREE.Vector3();
   const rot = new THREE.Vector3();
   const dir = new THREE.Vector3();
+  const pointerPos = useRef(new THREE.Vector2());
 
   const segmentProps: RigidBodyProps = {
     type: 'dynamic',
-    canSleep: true,
+    canSleep: false,
     colliders: false,
-    angularDamping: 4,
-    linearDamping: 4
+    angularDamping: 0.5,
+    linearDamping: 0.5
   };
 
-  const getLerped = (body: LanyardRigidBody): THREE.Vector3 => {
-    if (!body.lerped) {
-      body.lerped = new THREE.Vector3().copy(body.translation());
-    }
+  const getLerped = (body: LanyardRigidBody | null): THREE.Vector3 | null => {
+  if (!body) return null;
 
-    return body.lerped;
-  };
+  if (!body.lerped) {
+    body.lerped = new THREE.Vector3().copy(body.translation());
+  }
+
+  return body.lerped;
+};
 
   const { nodes, materials } = useGLTF(cardGLB) as any;
   const texture = useTexture(lanyardImage || lanyard);
@@ -239,9 +243,9 @@ function Band({
   const [dragged, drag] = useState<false | THREE.Vector3>(false);
   const [hovered, hover] = useState(false);
 
-  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1.5]);
+  useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1.5]);
+  useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1.5]);
   useSphericalJoint(j3, card, [
     [0, 0, 0],
     [0, 1.45, 0]
@@ -258,7 +262,7 @@ function Band({
 
   useFrame((state, delta) => {
     if (dragged && typeof dragged !== 'boolean') {
-      vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
+      vec.set(pointerPos.current.x, pointerPos.current.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
       vec.add(dir.multiplyScalar(state.camera.position.length()));
       [card, j1, j2, j3, fixed].forEach(ref => ref.current?.wakeUp());
@@ -269,59 +273,139 @@ function Band({
       });
     }
     if (fixed.current) {
-      [j1, j2].forEach(ref => {
-        const lerped = getLerped(ref.current);
-        const clampedDistance = Math.max(0.1, Math.min(1, lerped.distanceTo(ref.current.translation())));
-        lerped.lerp(ref.current.translation(), delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)));
-      });
-      curve.points[0].copy(j3.current.translation());
-      curve.points[1].copy(getLerped(j2.current));
-      curve.points[2].copy(getLerped(j1.current));
-      curve.points[3].copy(fixed.current.translation());
-      band.current.geometry.setPoints(curve.getPoints(isMobile ? 16 : 32));
-      ang.copy(card.current.angvel());
-      rot.copy(card.current.rotation());
-      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z }, true);
-    }
+  [j1, j2].forEach(ref => {
+    if (!ref.current) return;
+
+    const lerped = getLerped(ref.current);
+
+    if (!lerped) return;
+
+    const clampedDistance = Math.max(
+      0.1,
+      Math.min(1, lerped.distanceTo(ref.current.translation()))
+    );
+
+    lerped.lerp(
+      ref.current.translation(),
+      delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
+    );
   });
+}
+      if (
+  !j1.current ||
+  !j2.current ||
+  !j3.current ||
+  !fixed.current ||
+  !card.current ||
+  !band.current
+) return;
+
+curve.points[0].copy(j3.current.translation());
+
+const j2Lerped = getLerped(j2.current);
+const j1Lerped = getLerped(j1.current);
+
+if (!j1Lerped || !j2Lerped) return;
+
+curve.points[1].copy(j2Lerped);
+curve.points[2].copy(j1Lerped);
+curve.points[3].copy(fixed.current.translation());
+
+band.current.geometry.setPoints(
+  curve.getPoints(isMobile ? 16 : 32)
+);
+
+ang.copy(card.current.angvel());
+rot.copy(card.current.rotation());
+
+card.current.setAngvel(
+  {
+    x: ang.x,
+    y: ang.y - rot.y * 0.25,
+    z: ang.z
+  },
+  true
+);
 
   curve.curveType = 'chordal';
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  });
 
   return (
     <>
-      <group position={[2, 4, 0]}>
+      <group position={[2, 5.5, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
-        <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps} type="dynamic">
-          <BallCollider args={[0.1]} />
+        <RigidBody
+  position={[0.5, 0, 0]}
+  ref={j1}
+  {...segmentProps}
+  type="dynamic"
+  canSleep={false}
+>
+          <BallCollider args={[0.12]} />
         </RigidBody>
-        <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps} type="dynamic">
-          <BallCollider args={[0.1]} />
-        </RigidBody>
-        <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps} type="dynamic">
+        <RigidBody
+  position={[0.5, 0, 0]}
+  ref={j2}
+  {...segmentProps}
+  type="dynamic"
+  canSleep={false}
+>
           <BallCollider args={[0.1]} />
         </RigidBody>
         <RigidBody
-          position={[2, 0, 0]}
-          ref={card}
-          {...segmentProps}
-          type={dragged ? 'kinematicPosition' : 'dynamic'}
-        >
-          <CuboidCollider args={[0.8, 1.125, 0.01]} />
-          <group
-            scale={2.25}
-            position={[0, -1.2, -0.05]}
-            onPointerOver={() => hover(true)}
-            onPointerOut={() => hover(false)}
+  position={[1, 0, 0]}
+  ref={j3}
+  {...segmentProps}
+  type="dynamic"
+  canSleep={false}
+>
+          <BallCollider args={[0.1]} />
+        </RigidBody>
+        <RigidBody
+  position={[1, 0, 0]}
+  ref={card}
+  {...segmentProps}
+  type={dragged ? 'kinematicPosition' : 'dynamic'}
+>
+  <CuboidCollider args={[0.8, 1.125, 0.01]} />
+
+  <group
+    scale={2.25}
+    position={[0, -1.2, -0.05]}
+
+    onPointerMove={(e: ThreeEvent<PointerEvent>) => {
+      pointerPos.current.set(
+        e.pointer.x,
+        e.pointer.y
+      );
+    }}
+    
+  
+            onPointerEnter={() => hover(true)}
+            onPointerLeave={() => hover(false)}
             onPointerUp={(e: ThreeEvent<PointerEvent>) => {
+              e.stopPropagation();
               (e.target as Element).releasePointerCapture(e.pointerId);
               drag(false);
             }}
             onPointerDown={(e: ThreeEvent<PointerEvent>) => {
-               console.log("DRAG START");
-              (e.target as Element).setPointerCapture(e.pointerId);
-              drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
-            }}
+  console.log("DRAG START");
+  e.stopPropagation();
+
+  pointerPos.current.set(
+    e.pointer.x,
+    e.pointer.y
+  );
+
+  (e.target as Element).setPointerCapture(e.pointerId);
+
+  drag(
+    new THREE.Vector3()
+      .copy(e.point)
+      .sub(vec.copy(card.current.translation()))
+  );
+}}
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
@@ -352,4 +436,4 @@ function Band({
       </mesh>
     </>
   );
-}
+} 
