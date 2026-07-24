@@ -5,7 +5,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
  return (
   <nav className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-lg border-b border-white/10">
-    <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-5">
+    <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-10 py-5">
 
       {/* Logo */}
       <h1 className="text-xl md:text-2xl font-bold text-white">
@@ -24,7 +24,7 @@ export default function Navbar() {
 
       {/* Hamburger - HP saja */}
       <button
-        className="md:hidden text-white text-3xl"
+        className="md:hidden text-white text-3xl -translate-x-[100px]"
         onClick={() => setOpen(!open)}
       >
         {open ? "✕" : "☰"}
