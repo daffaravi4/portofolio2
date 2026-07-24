@@ -167,12 +167,12 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       <div className="flex flex-wrap gap-8 mt-12">
 
         <div>
-          <h3 className="text-5xl font-bold text-white">10+</h3>
+          <h3 className="text-5xl font-bold text-white">3+</h3>
           <p className="text-gray-500 mt-2">Projects Built</p>
         </div>
 
         <div>
-          <h3 className="text-5xl font-bold text-white">5+</h3>
+          <h3 className="text-5xl font-bold text-white">2+</h3>
           <p className="text-gray-500 mt-2">Certificates</p>
         </div>
 
@@ -302,7 +302,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
       <section
   id="projects"
-  className="px-6 md:px-24 py-20 px-6 md:px-24 py-20"
+  className="min-h-screen bg-[#0F172A] px-6 md:px-24 py-20"
 >
   <div className="max-w-7xl mx-auto">
 

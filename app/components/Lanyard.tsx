@@ -73,12 +73,15 @@ export default function Lanyard({
   }, []);
 
   return (
-   <div className="w-full h-full">
-      <Canvas
-        camera={{ position, fov }}
-         dpr={[1, 1]}
-  frameloop="always"
-        gl={{ alpha: transparent }}
+  <div
+    className="w-full h-full"
+    style={{ touchAction: "none" }}
+  >
+    <Canvas
+      style={{ touchAction: "none" }}
+      camera={{ position, fov }}
+      dpr={[1, isMobile ? 1.5 : 2]}
+      gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <primitive object={new THREE.AmbientLight(0xffffff, Math.PI)} />
@@ -333,7 +336,7 @@ card.current.setAngvel(
 
   return (
     <>
-      <group position={[2, 5.5, 0]}>
+      <group position={isMobile ? [0, 5.5, 0] : [2, 5.5, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody
   position={[0.5, 0, 0]}
