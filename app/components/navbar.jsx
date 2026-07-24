@@ -24,7 +24,7 @@ export default function Navbar() {
 
       {/* Hamburger - HP saja */}
       <button
-        className="md:hidden text-white text-3xl -translate-x-[150px]"
+        className="md:hidden text-white text-3xl -translate-x-[120px]"
         onClick={() => setOpen(!open)}
       >
         {open ? "✕" : "☰"}
