@@ -8,8 +8,8 @@ export default function Navbar() {
     <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-10 py-5">
 
       {/* Logo */}
-      <h1 className="text-xl md:text-2xl font-bold text-white">
-        My Portfolio
+      <h1 className="text-xl md:text-2xl font-bold text-[#D1D5DB]">
+        BUILDING DIGITAL EXPERIENCES
       </h1>
 
       {/* Desktop & Tablet Menu */}

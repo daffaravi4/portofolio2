@@ -48,7 +48,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       
               <RotatingText 
               
-               texts={['Web Dvelopment', 'Web Design', 'AI Developer', 'Web Progamming']}
+               texts={['Web Dvelopment', 'Web Design', 'AI Developer', 'Web Programming']}
   mainClassName="px-2 sm:px-2 md:px-3 bg-[#696969] text-black overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-2xl font-bold inline-flex"
   staggerFrom="last"
   initial={{ y: "100%" }}
@@ -68,7 +68,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
               <div className="flex flex-col items-start">
  <SplitText
   text="Hello, I'm DAFFA RAVI FERDIANSYAH"
-  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-left leading-tight"
+  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-left text-[#FFFFFF] leading-tight"
   delay={50}
   duration={1.25}
   ease="power3.out"
@@ -81,8 +81,8 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 />
 
   <SplitText
-    text="Full Stack Developer"
-    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-left text-[#696969] mb-6 leading-tight"
+    text="Aspiring Software Engineer"
+    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-left text-[#D1D5DB] mb-6 leading-tight"
     delay={50}
     duration={1.25}
     ease="power3.out"
@@ -98,11 +98,11 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
             <div>
               <BlurText
-                text="I'm a Full Stack Developer passionate about creating modern, scalable, and high-performance web applications. I enjoy transforming ideas into responsive and user-friendly digital experiences by combining clean design with efficient code. With a strong interest in both frontend and backend development, I continuously explore new technologies, frameworks, and best practices to build innovative solutions. Beyond web development, I'm also passionate about artificial intelligence and always eager to learn, experiment, and solve real-world problems through technology."
+                text="Passionate Full Stack Developer focused on building responsive, scalable, and user-friendly web applications using React, Next.js, Laravel, and python.Always eager to learn and create impactful digital solutions."
                 delay={50}
                 animateBy="words"
                 direction="top"
-                className="text-base sm:text-lg md:text-xl lg:text-2xl leading-7 md:leading-9 mb-8"
+                className="text-base text-[#A1A1AA] sm:text-lg md:text-xl lg:text-2xl leading-7 md:leading-9 mb-8"
               />
             </div>
           <div></div>
