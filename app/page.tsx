@@ -3,31 +3,29 @@ import Lanyard from "./components/Lanyard";
 import RotatingText from "./components/RotatingText";
 import SplitText from "./components/SplitText";
 import BlurText from "./components/BlurText";
-import ShapeGrid from "./components/ShapeGrid";
+import Silk from "./components/Silk";
 import Navbar from "./components/navbar.jsx";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 export default function Home() {
   return (
+     <>
+     <div className="fixed inset-0 -z-10">
     
-      <>
+    <Silk
+  speed={5}
+  scale={1}
+  color="#424242"
+  noiseIntensity={1.5}
+  rotation={0}
+/>
+</div>
+      
       <Navbar />
 
-      <section id="home">
+      <section id="home"
+         className="relative min-h-screen overflow-hidden"
+>
 
-      
-    <div className="relative min-h-screen overflow-hidden bg-[#111827]">
-    <div className="absolute inset-0 z-0">
-      <ShapeGrid 
-      speed={0.5}
-squareSize={40}
-direction='diagonal' // up, down, left, right, diagonal
-borderColor="#2F293A"
-hoverFillColor='#222'
-shape='square' // square, hexagon, circle, triangle
-hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
-   />
-   
-   </div>
      {/* Desktop */}
         <div className="absolute inset-0 z-10 hidden lg:block">
      <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]}/>
@@ -38,9 +36,10 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 </div>
       
        <div className="relative z-20">
-  <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-72">
-        <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
-          <div className="col-span-6 flex flex-col justify-center h-full">
+  <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
+
+    <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-72">
+          
             
 
               <div className="flex items-center gap-3 mb-6" >
@@ -104,21 +103,15 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
                 direction="top"
                 className="text-base text-[#A1A1AA] sm:text-lg md:text-xl lg:text-2xl leading-7 md:leading-9 mb-8"
               />
-            </div>
-          <div></div>
-          <div className="lg:col-span-6"></div>
-          </div>
-          </div>
-          
-        </div>
-      </div>
-
-    </div>
-    </section>
-    
+              </div>
+              </div> {/* col-span-12 */}
+</div> {/* grid */}
+</div> {/* relative */}
+</section>
+            
      <section
   id="about"
-  className="min-h-screen bg-[#0F172A] flex items-center px-6 md:px-24"
+  className="min-h-screen flex items-center px-6 md:px-24"
 >
   <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 w-full">
 
@@ -189,7 +182,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 </section>
       <section
   id="skills"
-  className="min-h-screen bg-[#111827] px-6 md:px-24 py-20"
+  className="min-h-screen px-6 md:px-24 py-20"
 >
   <div className="max-w-7xl mx-auto">
 
@@ -211,7 +204,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
 
       {/* Frontend */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition-all duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
         <h3 className="text-3xl font-bold text-white mb-6">
           Frontend
         </h3>
@@ -228,7 +232,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* Backend */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition-all duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
         <h3 className="text-3xl font-bold text-white mb-6">
           Backend
         </h3>
@@ -242,7 +257,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* Database */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition-all duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
         <h3 className="text-3xl font-bold text-white mb-6">
           Database
         </h3>
@@ -255,7 +281,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* Programming */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition-all duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
         <h3 className="text-3xl font-bold text-white mb-6">
           Programming
         </h3>
@@ -268,7 +305,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* AI */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition-all duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
         <h3 className="text-3xl font-bold text-white mb-6">
           AI & Computer Vision
         </h3>
@@ -281,7 +329,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* Tools */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition-all duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
         <h3 className="text-3xl font-bold text-white mb-6">
           Tools
         </h3>
@@ -302,7 +361,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
       <section
   id="projects"
-  className="min-h-screen bg-[#0F172A] px-6 md:px-24 py-20"
+  className="min-h-screen px-6 md:px-24 py-20"
 >
   <div className="max-w-7xl mx-auto">
 
@@ -323,12 +382,24 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-20">
 
       {/* Project 1 */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-3xl overflow-hidden hover:border-white transition duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
 
         <div className="h-64 overflow-hidden">
   <img 
-    src="assets/lanyard/projects/coffe.png"
-    alt="Coffee Shop Website"
+    /* taruh foto project dibawah ini*/
+    src="assets/lanyard/projects/"
+    alt="belum ada project"
     className="w-full h-full object-cover hover:scale-105 transition duration-500"
   />
 </div>
@@ -336,12 +407,11 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
         <div className="p-8">
 
           <h3 className="text-3xl font-bold text-white">
-            Coffee Shop Website
+            belum ada project wkwk
           </h3>
 
           <p className="text-gray-400 mt-5 leading-8">
-            A modern coffee shop landing page featuring smooth animations,
-            responsive layouts, and an elegant UI design.
+            kosong
           </p>
 
           <div className="flex flex-wrap gap-3 mt-6">
@@ -354,11 +424,23 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* Project 2 */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-3xl overflow-hidden hover:border-white transition duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
 
        <div className="h-64 overflow-hidden">
   <img 
-    src="assets/lanyard/projects/hand.png"
+  /* taruh foto project dibawah ini*/
+    src="assets/lanyard/projects/"
     alt="Nama Project"
     className="w-full h-full object-cover hover:scale-105 transition duration-500"
   />
@@ -367,12 +449,11 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
         <div className="p-8">
 
           <h3 className="text-3xl font-bold text-white">
-            AI Hand Tracking
+            belum ada project
           </h3>
 
           <p className="text-gray-400 mt-5 leading-8">
-            A computer vision project using MediaPipe and OpenCV for
-            real-time hand tracking and gesture interaction.
+            kosong
           </p>
 
           <div className="flex flex-wrap gap-3 mt-6">
@@ -385,10 +466,22 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* Project 3 */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-3xl overflow-hidden hover:border-white transition duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
 
        <div className="h-64 overflow-hidden">
   <img 
+   /* taruh foto project dibawah ini*/
     src="assets/lanyard/projects/dave.png" 
     alt="Dave"
     className="w-full h-full object-cover hover:scale-105 transition duration-500"
@@ -416,11 +509,23 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* Project 4 */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-3xl overflow-hidden hover:border-white transition duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
 
         <div className="h-64 overflow-hidden">
   <img 
-    src="assets/lanyard/projects/ai.png"
+    /* taruh foto project dibawah ini*/
+    src="assets/lanyard/projects/"
     alt="Nama Project"
     className="w-full h-full object-cover hover:scale-105 transition duration-500"
   />
@@ -429,12 +534,11 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
         <div className="p-8">
 
           <h3 className="text-3xl font-bold text-white">
-            Jarvis AI Assistant
+            belum ada project
           </h3>
 
           <p className="text-gray-400 mt-5 leading-8">
-            A voice-controlled assistant capable of recognizing commands,
-            responding with speech, and performing simple automation tasks.
+           kosong
           </p>
 
           <div className="flex flex-wrap gap-3 mt-6">
@@ -453,7 +557,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
       <section
   id="contact"
-  className="min-h-screen bg-[#111827] px-6 md:px-24 py-20 flex items-center"
+  className="min-h-screen px-6 md:px-24 py-20 flex items-center"
 >
   <div className="max-w-7xl mx-auto w-full">
 
@@ -474,7 +578,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
 
       {/* Email */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
     <div className="flex items-center gap-4">
       <FaEnvelope className="w-7 h-7 text-[#696969]" />
       <div>
@@ -485,7 +600,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
   </div>
 
       {/* Phone */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
     <div className="flex items-center gap-4">
       <FaPhone className="w-7 h-7 text-[#696969]" />
       <div>
@@ -496,7 +622,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
   </div>
 
       {/* GitHub */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
     <div className="flex items-center gap-4">
       <FaGithub className="w-7 h-7 text-[#696969]" />
       <div>
@@ -506,7 +643,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
     </div>
   </div>
       {/* LinkedIn */}
-      <div className="bg-[#19222D] border border-[#2F293A] rounded-2xl p-8 hover:border-white transition">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
     <div className="flex items-center gap-4">
      <FaLinkedin className="w-7 h-7 text-[#696969]" />
       <div>
@@ -517,9 +665,9 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
   </div>
     </div> {/* grid */}
 
-    <div className="border-t border-[#2F293A] mt-20 pt-8 flex flex-col md:flex-row gap-4 justify-between items-center">
+    <div className="">
       {/* Footer */}
-      <div className="border-t border-[#2F293A] mt-20 pt-8 flex flex-col md:flex-row gap-4 justify-between items-center">
+      <div className="rounded-2xl p-8">
         <p className="text-gray-500">
           © 2026 Daffa Ravi Ferdiansyah. All Rights Reserved.
         </p>
@@ -535,7 +683,7 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
 
      <section
   id="certificates"
-  className="min-h-screen bg-[#0F172A] px-6 md:px-24 py-20"
+  className="min-h-screen px-6 md:px-24 py-20"
 >
   <div className="max-w-7xl mx-auto">
 
@@ -555,7 +703,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
 
       {/* Certificate 1 */}
-      <div className="bg-[#19222D] rounded-3xl border border-[#2F293A] overflow-hidden hover:border-white transition duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
         <Image
   src="/assets/lanyard/certificates/BELAJAR DASAR CLOUD dan GEN AI di AWS.png"
   alt="Certificate"
@@ -576,7 +735,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* Certificate 2 */}
-      <div className="bg-[#19222D] rounded-3xl border border-[#2F293A] overflow-hidden hover:border-white transition duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
         <Image
   src="/assets/lanyard/certificates/MEMULAIPEMROGRAMANDENGANPYTHON.png"
   alt="Certificate"
@@ -597,7 +767,18 @@ hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
       </div>
 
       {/* Certificate 3 */}
-      <div className="bg-[#19222D] rounded-3xl border border-[#2F293A] overflow-hidden hover:border-white transition duration-300">
+      <div className="bg-[#424242]
+border border-[#2F293A]
+rounded-3xl
+p-8
+overflow-hidden
+transition-all
+duration-300
+ease-out
+hover:scale-[1.02]
+hover:border-white
+hover:shadow-xl
+cursor-pointer">
         <Image
   src="/assets/lanyard/certificates/SPEC-DRIVENDEVELOPMENTDENGANKIRO.png"
   alt="Certificate"

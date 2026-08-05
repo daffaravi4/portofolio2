@@ -9,7 +9,7 @@ export default function Navbar() {
 
       {/* Logo */}
       <h1 className="text-xl md:text-2xl font-bold text-[#D1D5DB]">
-        BUILDING DIGITAL EXPERIENCES
+        DAFFA
       </h1>
 
       {/* Desktop & Tablet Menu */}
