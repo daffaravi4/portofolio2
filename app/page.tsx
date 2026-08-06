@@ -6,6 +6,7 @@ import BlurText from "./components/BlurText";
 import Silk from "./components/Silk";
 import Navbar from "./components/navbar.jsx";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
+import ProfileCard from "./components/ProfileCard";
 export default function Home() {
   return (
      <>
@@ -117,14 +118,24 @@ export default function Home() {
 
     {/* Left */}
     <div className="lg:col-span-5 flex justify-center items-center">
-      <div className="w-full max-w-[420px] rounded-3xl overflow-hidden border border-[#2F293A]">
-  <Image
-    src="/assets/lanyard/about/daffa.jpeg"
-    alt="Daffa Ravi Ferdiansyah"
-    width={420}
-    height={520}
-    className="w-full h-full object-cover"
-  />
+      <div className="w-full max-w-[420px] rounded-3xl">
+<ProfileCard
+  name="Daffa Ravi"
+  title=" Informatics Student"
+  handle="javicodes"
+  status="Online"
+  contactText="Contact Me"
+  avatarUrl="/assets/lanyard/about/dappa1.jpeg"
+  miniAvatarUrl="/assets/lanyard/dappa.jpeg"
+  showUserInfo={false}
+  enableTilt={true}
+  enableMobileTilt={false}
+  behindGlowColor="rgba(125,190,255,0.67)"
+  behindGlowSize="50%"
+  iconUrl="/assets/lanyard/iconpattern.png"
+  behindGlowEnabled
+  innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
+/>
 </div>
     </div>
 
