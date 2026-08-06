@@ -28,7 +28,7 @@ export default function Home() {
 
      {/* Desktop */}
         <div className="absolute inset-0 z-10 hidden lg:block">
-     <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]}/>
+     <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]}/>
      </div>
   {/* Mobile */}
 <div className="relative z-10 block lg:hidden h-[600px] w-full">
@@ -80,7 +80,7 @@ export default function Home() {
 />
 
   <SplitText
-    text="Aspiring Software Engineer"
+    text="Informatics Student"
     className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-left text-[#D1D5DB] mb-6 leading-tight"
     delay={50}
     duration={1.25}
@@ -97,7 +97,7 @@ export default function Home() {
 
             <div>
               <BlurText
-                text="Passionate Full Stack Developer focused on building responsive, scalable, and user-friendly web applications using React, Next.js, Laravel, and python.Always eager to learn and create impactful digital solutions."
+                text="Passionate Informatics Student focused on building responsive, scalable, and user-friendly web applications using React, Next.js, Laravel, and python.Always eager to learn and create impactful digital solutions."
                 delay={50}
                 animateBy="words"
                 direction="top"
