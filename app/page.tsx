@@ -7,6 +7,8 @@ import Silk from "./components/Silk";
 import Navbar from "./components/navbar.jsx";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 import ProfileCard from "./components/ProfileCard";
+import { michroma } from "@/app/font";
+import Skills from "./components/Skills";
 export default function Home() {
   return (
      <>
@@ -48,8 +50,8 @@ export default function Home() {
       
               <RotatingText 
               
-               texts={['Web Dvelopment', 'Web Design', 'AI Developer', 'Web Programming']}
-  mainClassName="px-2 sm:px-2 md:px-3 bg-[#696969] text-black overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-2xl font-bold inline-flex"
+               texts={['Web Development', 'Web Design', 'AI Developer', 'Web Programming']}
+  mainClassName="px-2 sm:px-2 md:px-3 bg-[#696969] text-white overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-2xl font-bold inline-flex"
   staggerFrom="last"
   initial={{ y: "100%" }}
   animate={{ y: 0 }}
@@ -68,7 +70,7 @@ export default function Home() {
               <div className="flex flex-col items-start">
  <SplitText
   text="Hello, I'm DAFFA RAVI FERDIANSYAH"
-  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-left text-[#FFFFFF] leading-tight"
+  className={`${michroma.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-left text-[#FFFFFF] leading-tight`}
   delay={50}
   duration={1.25}
   ease="power3.out"
@@ -82,7 +84,7 @@ export default function Home() {
 
   <SplitText
     text="Informatics Student"
-    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-left text-[#D1D5DB] mb-6 leading-tight"
+    className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-left text-[#D1D5DB] mb-6 leading-tight"
     delay={50}
     duration={1.25}
     ease="power3.out"
@@ -155,7 +157,7 @@ export default function Home() {
 
       <p className="text-gray-400 text-base md:text-xl leading-8 md:leading-9mt-8">
         Hello! I'm <span className="text-white font-semibold">Daffa Ravi Ferdiansyah</span>,
-        a Full Stack Developer who enjoys creating modern websites and web
+        a Informatics Student who enjoys creating modern websites and web
         applications with clean, responsive, and user-friendly interfaces.
         I love turning ideas into real products through efficient code,
         thoughtful design, and continuous learning.
@@ -192,186 +194,16 @@ export default function Home() {
   </div>
 </section>
       <section
-  id="skills"
-  className="min-h-screen px-6 md:px-24 py-20"
 >
   <div className="max-w-7xl mx-auto">
 
-    <p className="text-[#696969] uppercase tracking-[6px] font-semibold">
-      My Skills
-    </p>
-
-    <h2 className="text-6xl font-bold text-white mt-4">
-      Technologies I Use
-    </h2>
-
-    <p className="text-gray-400 text-xl mt-6 max-w-3xl leading-8">
-      I enjoy working with modern technologies to build responsive,
-      scalable, and user-friendly applications. I'm continuously
-      learning new tools and frameworks to improve my development
-      skills.
-    </p>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
-
-      {/* Frontend */}
-      <div className="bg-[#424242]
-border border-[#2F293A]
-rounded-3xl
-p-8
-overflow-hidden
-transition-all
-duration-300
-ease-out
-hover:scale-[1.02]
-hover:border-white
-hover:shadow-xl
-cursor-pointer">
-        <h3 className="text-3xl font-bold text-white mb-6">
-          Frontend
-        </h3>
-
-        <div className="flex flex-wrap gap-3">
-          <span className="skill">HTML5</span>
-          <span className="skill">CSS3</span>
-          <span className="skill">JavaScript</span>
-          <span className="skill">TypeScript</span>
-          <span className="skill">React</span>
-          <span className="skill">Next.js</span>
-          <span className="skill">Tailwind CSS</span>
-        </div>
-      </div>
-
-      {/* Backend */}
-      <div className="bg-[#424242]
-border border-[#2F293A]
-rounded-3xl
-p-8
-overflow-hidden
-transition-all
-duration-300
-ease-out
-hover:scale-[1.02]
-hover:border-white
-hover:shadow-xl
-cursor-pointer">
-        <h3 className="text-3xl font-bold text-white mb-6">
-          Backend
-        </h3>
-
-        <div className="flex flex-wrap gap-3">
-          <span className="skill">Node.js</span>
-          <span className="skill">Express.js</span>
-          <span className="skill">REST API</span>
-          <span className="skill">PHP</span>
-        </div>
-      </div>
-
-      {/* Database */}
-      <div className="bg-[#424242]
-border border-[#2F293A]
-rounded-3xl
-p-8
-overflow-hidden
-transition-all
-duration-300
-ease-out
-hover:scale-[1.02]
-hover:border-white
-hover:shadow-xl
-cursor-pointer">
-        <h3 className="text-3xl font-bold text-white mb-6">
-          Database
-        </h3>
-
-        <div className="flex flex-wrap gap-3">
-          <span className="skill">MySQL</span>
-          <span className="skill">Firebase</span>
-          <span className="skill">Supabase</span>
-        </div>
-      </div>
-
-      {/* Programming */}
-      <div className="bg-[#424242]
-border border-[#2F293A]
-rounded-3xl
-p-8
-overflow-hidden
-transition-all
-duration-300
-ease-out
-hover:scale-[1.02]
-hover:border-white
-hover:shadow-xl
-cursor-pointer">
-        <h3 className="text-3xl font-bold text-white mb-6">
-          Programming
-        </h3>
-
-        <div className="flex flex-wrap gap-3">
-          <span className="skill">Python</span>
-          <span className="skill">JavaScript</span>
-          <span className="skill">Java</span>
-        </div>
-      </div>
-
-      {/* AI */}
-      <div className="bg-[#424242]
-border border-[#2F293A]
-rounded-3xl
-p-8
-overflow-hidden
-transition-all
-duration-300
-ease-out
-hover:scale-[1.02]
-hover:border-white
-hover:shadow-xl
-cursor-pointer">
-        <h3 className="text-3xl font-bold text-white mb-6">
-          AI & Computer Vision
-        </h3>
-
-        <div className="flex flex-wrap gap-3">
-          <span className="skill">OpenCV</span>
-          <span className="skill">MediaPipe</span>
-          <span className="skill">TensorFlow</span>
-        </div>
-      </div>
-
-      {/* Tools */}
-      <div className="bg-[#424242]
-border border-[#2F293A]
-rounded-3xl
-p-8
-overflow-hidden
-transition-all
-duration-300
-ease-out
-hover:scale-[1.02]
-hover:border-white
-hover:shadow-xl
-cursor-pointer">
-        <h3 className="text-3xl font-bold text-white mb-6">
-          Tools
-        </h3>
-
-        <div className="flex flex-wrap gap-3">
-          <span className="skill">Git</span>
-          <span className="skill">GitHub</span>
-          <span className="skill">VS Code</span>
-          <span className="skill">Figma</span>
-          <span className="skill">Postman</span>
-        </div>
-      </div>
-
-    </div>
+    <Skills />
 
   </div>
 </section>
 
       <section
-  id="projects"
+      id="projects"
   className="min-h-screen px-6 md:px-24 py-20"
 >
   <div className="max-w-7xl mx-auto">
