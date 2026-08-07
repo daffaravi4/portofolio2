@@ -1,5 +1,5 @@
 "use client";
-
+import { michroma } from "@/app/font";
 import { useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -8,19 +8,36 @@ export default function Navbar() {
     <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-10 py-5">
 
       {/* Logo */}
-      <h1 className="text-xl md:text-2xl font-bold text-[#D1D5DB]">
-        DAFFA
-      </h1>
+      <h1 className={`${michroma.className} text-xl md:text-2xl text-[#D1D5DB]`}>
+  DAFFA
+</h1>
 
       {/* Desktop & Tablet Menu */}
       <div className="hidden md:flex gap-8 text-white">
-        <a href="#home" className="hover:text-gray-400">Home</a>
-        <a href="#about" className="hover:text-gray-400">About</a>
-        <a href="#skills" className="hover:text-gray-400">Skills</a>
-        <a href="#projects" className="hover:text-gray-400">Projects</a>
-        <a href="#contact" className="hover:text-gray-400">Contact</a>
-        <a href="#certificates" className="hover:text-gray-400">Certificates</a>
-      </div>
+  <a href="#home" className={`${michroma.className} hover:text-gray-400`}>
+    Home
+  </a>
+
+  <a href="#about" className={`${michroma.className} hover:text-gray-400`}>
+    About
+  </a>
+
+  <a href="#skills" className={`${michroma.className} hover:text-gray-400`}>
+    Skills
+  </a>
+
+  <a href="#projects" className={`${michroma.className} hover:text-gray-400`}>
+    Projects
+  </a>
+
+  <a href="#contact" className={`${michroma.className} hover:text-gray-400`}>
+    Contact
+  </a>
+
+  <a href="#certificates" className={`${michroma.className} hover:text-gray-400`}>
+    Certificates
+  </a>
+</div>
 
       {/* Hamburger - HP saja */}
       <button
