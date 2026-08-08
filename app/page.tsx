@@ -1,9 +1,11 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Lanyard from "./components/Lanyard";
 import RotatingText from "./components/RotatingText";
 import SplitText from "./components/SplitText";
 import BlurText from "./components/BlurText";
-import Silk from "./components/Silk";
 import Navbar from "./components/navbar.jsx";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 import ProfileCard from "./components/ProfileCard";
@@ -12,25 +14,139 @@ import Skills from "./components/Skills";
 import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
+
 export default function Home() {
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const video2Ref = useRef<HTMLVideoElement>(null);
+  const video3Ref = useRef<HTMLVideoElement>(null);
+
+  const [started, setStarted] = useState(false);
+  const [showPortfolio, setShowPortfolio] = useState(false);
+  const [video2Playing, setVideo2Playing] = useState(false);
+
+  useEffect(() => {
+    if (started && video2Ref.current) {
+      video2Ref.current.currentTime = 0;
+      video2Ref.current.playbackRate = 2;
+
+      video2Ref.current.play().catch((error) => {
+        console.error("Video 2 gagal dimainkan:", error);
+      });
+    }
+  }, [started]);
+
   return (
-     <>
-     <div className="fixed inset-0 -z-10">
+    <>
+      {/* VIDEO 3 - BACKGROUND */}
+      <video
+        ref={video3Ref}
+        src="/videos/raven-3new.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover -z-20"
+      />
+
+      {!showPortfolio && (
+  <div className="fixed inset-0 z-[100] bg-black overflow-hidden">
+
+    {/* VIDEO 1 */}
+{!video2Playing && (
+      <div className="absolute inset-0">
+
+        <video
+          ref={video1Ref}
+          src="/videos/raven-1.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          onLoadedMetadata={() => {
+    if (video1Ref.current) {
+      video1Ref.current.playbackRate = 3;
+    }
+  }}
+          className="w-full h-full object-cover brightness-[0.7]"
+        />
+
+        {/* Overlay gelap */}
+         <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
+        {/* Tombol MASUK */}
+        <div className="absolute inset-0 flex items-end justify-center pb-16 sm:pb-20">
+          <button
+            onClick={() => {
+              setStarted(true);
+              video1Ref.current?.pause();
+
+              if (video2Ref.current) {
+                video2Ref.current.currentTime = 0;
+                video2Ref.current.play();
+              }
+            }}
+            className="
+              px-8 py-3
+              rounded-full
+              border border-white/40
+              bg-white/10
+              backdrop-blur-md
+              text-white
+              text-sm sm:text-base
+              font-semibold
+              tracking-[4px]
+              uppercase
+              transition-all duration-300
+              hover:bg-white
+              hover:text-black
+              hover:scale-105
+            "
+          >
+            OPEN PORTFOLIO
+          </button>
+        </div>
+
+      </div>
+    )}
+
     
-    <Silk
-  speed={5}
-  scale={1}
-  color="#424242"
-  noiseIntensity={1.5}
-  rotation={0}
+    {/* VIDEO 2 */}
+<video
+  ref={video2Ref}
+  src="/videos/raven-2.mp4"
+  muted
+  playsInline
+  preload="auto"
+  onPlaying={() => {
+    setVideo2Playing(true);
+  }}
+  onEnded={() => {
+    setShowPortfolio(true);
+
+    if (video3Ref.current) {
+      video3Ref.current.currentTime = 0;
+      video3Ref.current.play();
+    }
+  }}
+  className={`absolute inset-0 w-full h-full object-cover brightness-[0.5] ${
+  started
+    ? "opacity-100 pointer-events-auto"
+    : "opacity-0 pointer-events-none"
+}`}
 />
-</div>
-      
+
+  </div>
+)}
+
+      {/* Overlay agar teks tetap terbaca */}
+      <div className="fixed inset-0 -z-10 bg-black/30 pointer-events-none" />
+
       <Navbar />
 
-      <section id="home"
-         className="relative min-h-screen overflow-hidden"
->
+      <section
+        id="home"
+        className="relative min-h-screen overflow-hidden"
+      >
 
      {/* Desktop */}
         <div className="absolute inset-0 z-10 hidden lg:block">
