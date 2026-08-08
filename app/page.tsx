@@ -117,7 +117,14 @@ export default function Home() {
             
      <section
   id="about"
-  className="min-h-screen flex items-center px-6 md:px-24"
+  className="
+    min-h-screen
+    flex flex-col lg:grid lg:grid-cols-12
+    items-center
+    gap-12 lg:gap-16
+    px-5 sm:px-8 md:px-16 lg:px-24
+    py-24 lg:py-0
+  "
 >
   <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 w-full">
 
@@ -151,14 +158,14 @@ export default function Home() {
         About Me
       </p>
 
-      <h2 className="text-4xl md:text-6xl font-bold text-white mt-4 leading-tight">
+      <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mt-4 leading-tight">
         Passionate About
         <br />
         Building Digital
         <span className="text-[#9CA3AF]"> Experiences.</span>
       </h2>
 
-      <p className="text-gray-400 text-base md:text-xl leading-8 md:leading-9mt-8">
+      <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-6 md:mt-8">
         Hello! I'm <span className="text-white font-semibold">Daffa Ravi Ferdiansyah</span>,
         a Informatics Student who enjoys creating modern websites and web
         applications with clean, responsive, and user-friendly interfaces.
@@ -166,27 +173,27 @@ export default function Home() {
         thoughtful design, and continuous learning.
       </p>
 
-      <p className="text-gray-400 text-xl leading-9 mt-6">
+      <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-5 md:mt-6">
         Besides web development, I'm also passionate about Artificial
         Intelligence, interactive user experiences, and exploring new
         technologies that can solve real-world problems. Every project is an
         opportunity for me to learn, improve, and build something meaningful.
       </p>
 
-      <div className="flex flex-wrap gap-8 mt-12">
+      <div className="flex flex-wrap gap-7 sm:gap-8 mt-8 md:mt-12">
 
         <div>
-          <h3 className="text-5xl font-bold text-white">3+</h3>
+          <h3 className="text-4xl sm:text-5xl font-bold text-white">3+</h3>
           <p className="text-gray-500 mt-2">Projects Built</p>
         </div>
 
         <div>
-          <h3 className="text-5xl font-bold text-white">2+</h3>
+          <h3 className="text-4xl sm:text-5xl font-bold text-white">2+</h3>
           <p className="text-gray-500 mt-2">Certificates</p>
         </div>
 
         <div>
-          <h3 className="text-5xl font-bold text-white">∞</h3>
+          <h3 className="text-4xl sm:text-5xl font-bold text-white">∞</h3>
           <p className="text-gray-500 mt-2">Learning Journey</p>
         </div>
 
