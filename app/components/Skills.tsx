@@ -115,9 +115,9 @@ export default function Skills() {
         My Skills
       </p>
 
-      <h2 className="text-6xl font-bold text-white mt-4">
-        Technologies I Use
-      </h2>
+      <h2 className="text-4xl font-bold text-white mt-4 md:text-5xl">
+  Technologies I Use
+</h2>
 
 
       <div className="mt-20 border border-[#2F293A] rounded-3xl p-10">

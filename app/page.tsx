@@ -73,7 +73,7 @@ export default function Home() {
               <div className="flex flex-col items-start">
  <SplitText
   text="Hello, I'm DAFFA RAVI FERDIANSYAH"
-  className={`${michroma.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-left text-[#FFFFFF] leading-tight`}
+  className={`${michroma.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-left text-[#FFFFFF] leading-[1.15] lg:leading-tight break-words`}
   delay={50}
   duration={1.25}
   ease="power3.out"
@@ -130,7 +130,7 @@ export default function Home() {
 
     {/* Left */}
     <div className="lg:col-span-5 flex justify-center items-center">
-      <div className="w-full max-w-[420px] rounded-3xl">
+      <div className="w-[280px] sm:w-[320px] lg:w-full lg:max-w-[420px] rounded-3xl">
 <ProfileCard
   name="Daffa Ravi"
   title=" Informatics Student"
