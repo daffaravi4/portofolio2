@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
  return (
-  <nav className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-lg border-b border-white/10">
+  <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-xl border-b border-white/20">
     <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-10 py-5">
 
       {/* Logo */}
@@ -51,7 +51,7 @@ export default function Navbar() {
 
     {/* Mobile Menu */}
     {open && (
-      <div className="md:hidden bg-[#111827]/95 backdrop-blur-lg flex flex-col items-center gap-6 py-6 text-white">
+      <div className="md:hidden bg-black/30 backdrop-blur-xl border-b border-white/20 flex flex-col items-center gap-6 py-6 text-white">
 
         <a href="#home" onClick={() => setOpen(false)}>Home</a>
         <a href="#about" onClick={() => setOpen(false)}>About</a>
