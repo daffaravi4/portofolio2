@@ -162,7 +162,7 @@ export default function Home() {
           <span className="text-[#9CA3AF]"> Experiences.</span>
         </h2>
 
-        <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-6 md:mt-8">
+        <p className="text-gray-400 text-[13px] text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-6 md:mt-8">
           Hello! I'm{" "}
           <span className="text-white font-semibold">
             Daffa Ravi Ferdiansyah
