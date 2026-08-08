@@ -128,8 +128,8 @@ export default function Home() {
         <div className="w-[280px] sm:w-[320px] lg:w-full lg:max-w-[420px] rounded-3xl mx-auto">
 
           <ProfileCard
-            name="Daffa Ravi"
-            title="Informatics Student"
+            name=""
+            title=""
             handle="javicodes"
             status="Online"
             contactText="Contact Me"
