@@ -1,5 +1,5 @@
 "use client";
-
+import { michroma } from "@/app/font";
 import {
   FaGithub,
   FaLinkedin,
@@ -42,9 +42,11 @@ export default function Contact() {
             Contact
           </p>
 
-          <h2 className="text-5xl font-bold text-white md:text-6xl">
-            Let's Work Together
-          </h2>
+          <h2
+  className={`${michroma.className} text-5xl font-bold text-white md:text-6xl`}
+>
+  Let's Work Together
+</h2>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-400">
             I'm always open to discussing new opportunities,
@@ -139,9 +141,11 @@ export default function Contact() {
             md:p-12
           "
         >
-          <h3 className="text-2xl font-bold text-white md:text-3xl">
-            Have a project in mind?
-          </h3>
+          <h3
+  className={`${michroma.className} text-2xl font-bold text-white md:text-3xl`}
+>
+  Have a project in mind?
+</h3>
 
           <p className="mx-auto mt-3 max-w-xl text-gray-400">
             Let's turn your idea into something useful,

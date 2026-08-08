@@ -1,5 +1,5 @@
 "use client";
-
+import { michroma } from "@/app/font";
 import { useState } from "react";
 import Image from "next/image";
 import { X, ExternalLink } from "lucide-react";
@@ -50,9 +50,11 @@ export default function Certificates() {
               CERTIFICATES
             </p>
 
-            <h2 className="text-4xl font-bold text-white md:text-5xl">
-              My Certificates
-            </h2>
+            <h2
+  className={`${michroma.className} text-4xl font-bold text-white md:text-5xl`}
+>
+  My Certificates
+</h2>
 
             <p className="mt-5 max-w-2xl text-gray-400">
               These certificates represent my continuous learning journey

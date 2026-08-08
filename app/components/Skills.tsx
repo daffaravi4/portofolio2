@@ -1,5 +1,5 @@
 "use client";
-
+import { michroma } from "@/app/font";
 import React from "react";
 import {
   SiHtml5,
@@ -115,7 +115,9 @@ export default function Skills() {
         My Skills
       </p>
 
-      <h2 className="text-4xl font-bold text-white mt-4 md:text-5xl">
+      <h2
+  className={`${michroma.className} text-4xl font-bold text-white mt-4 md:text-5xl`}
+>
   Technologies I Use
 </h2>
 

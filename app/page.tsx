@@ -64,7 +64,7 @@ export default function Home() {
           playsInline
           onLoadedMetadata={() => {
     if (video1Ref.current) {
-      video1Ref.current.playbackRate = 3;
+      video1Ref.current.playbackRate = 1.6;
     }
   }}
           className="w-full h-full object-cover brightness-[0.7]"
@@ -160,7 +160,7 @@ export default function Home() {
        <div className="relative z-20">
   <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
 
-    <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-72">
+    <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-[328px]">
           
             
 
@@ -188,6 +188,7 @@ export default function Home() {
             <div>
               <div className="flex flex-col items-start">
  <SplitText
+ key={showPortfolio ? "visible" : "hidden"}
   text="Hello, I'm DAFFA RAVI FERDIANSYAH"
   className={`${michroma.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-left text-[#FFFFFF] leading-[1.15] lg:leading-tight break-words`}
   delay={50}
@@ -202,6 +203,7 @@ export default function Home() {
 />
 
   <SplitText
+  key={showPortfolio ? "student-visible" : "student-hidden"}
     text="Informatics Student"
     className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-left text-[#D1D5DB] mb-6 leading-tight"
     delay={50}
@@ -219,6 +221,7 @@ export default function Home() {
 
             <div>
               <BlurText
+              key={showPortfolio ? "blur-visible" : "blur-hidden"}
                 text="Passionate Informatics Student focused on building responsive, scalable, and user-friendly web applications using React, Next.js, Laravel, and python.Always eager to learn and create impactful digital solutions."
                 delay={50}
                 animateBy="words"
@@ -237,11 +240,11 @@ export default function Home() {
 >
   <div className="w-full max-w-7xl mx-auto">
 
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-[420px_minmax(0,1fr)] gap-10 lg:gap-12 items-center">
 
       {/* Left - FOTO */}
-      <div className="lg:col-span-5 flex justify-center items-center">
-        <div className="w-[280px] sm:w-[320px] lg:w-full lg:max-w-[420px] rounded-3xl mx-auto">
+      <div className="flex justify-start items-center">
+  <div className="w-[280px] sm:w-[320px] lg:w-[420px] rounded-3xl">
 
           <ProfileCard
             name=""
@@ -265,18 +268,19 @@ export default function Home() {
       </div>
 
       {/* Right - ABOUT */}
-      <div className="lg:col-span-7 flex flex-col justify-center">
-
+      <div className="flex flex-col justify-center min-w-0">
         <p className="text-[#696969] uppercase tracking-[6px] font-semibold">
           About Me
         </p>
 
-        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mt-4 leading-tight">
-          Passionate About
-          <br />
-          Building Digital
-          <span className="text-[#9CA3AF]"> Experiences.</span>
-        </h2>
+        <h2
+  className={`${michroma.className} text-3xl sm:text-4xl md:text-6xl font-bold text-white mt-4 leading-tight`}
+>
+  Passionate About
+<br className="lg:hidden" />
+  Building Digital
+  <span className="text-[#9CA3AF]"> Experiences.</span>
+</h2>
 
         <p className="text-gray-400 text-[13px] text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-6 md:mt-8">
           Hello! I'm{" "}
@@ -289,7 +293,7 @@ export default function Home() {
           thoughtful design, and continuous learning.
         </p>
 
-        <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-5 md:mt-6">
+        <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-5 md:mt-6 lg:w-full">
           Besides web development, I'm also passionate about Artificial
           Intelligence, interactive user experiences, and exploring new
           technologies that can solve real-world problems. Every project is

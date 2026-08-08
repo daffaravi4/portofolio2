@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { X, ExternalLink, ArrowUpRight, Plus } from "lucide-react";
-
+import { michroma } from "@/app/font";
 const projects = [
   {
     title: "Coming Soon",
@@ -71,9 +71,11 @@ export default function Projects() {
               My Projects
             </p>
 
-            <h2 className="text-4xl font-bold text-white md:text-5xl">
-              Featured Projects
-            </h2>
+            <h2
+  className={`${michroma.className} text-4xl font-bold text-white md:text-5xl`}
+>
+  Featured Projects
+</h2>
 
             <p className="mt-5 max-w-3xl leading-7 text-gray-400">
               A collection of projects I've built while exploring
