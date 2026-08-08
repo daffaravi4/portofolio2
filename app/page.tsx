@@ -117,90 +117,105 @@ export default function Home() {
             
      <section
   id="about"
-  className="
-    min-h-screen
-    flex flex-col lg:grid lg:grid-cols-12
-    items-center
-    gap-12 lg:gap-16
-    px-5 sm:px-8 md:px-16 lg:px-24
-    py-24 lg:py-0
-  "
+  className="min-h-screen flex items-center px-5 sm:px-8 md:px-16 lg:px-24 py-24 lg:py-0"
 >
-  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 w-full">
+  <div className="w-full max-w-7xl mx-auto">
 
-    {/* Left */}
-    <div className="lg:col-span-5 flex justify-center items-center">
-      <div className="w-[280px] sm:w-[320px] lg:w-full lg:max-w-[420px] rounded-3xl">
-<ProfileCard
-  name="Daffa Ravi"
-  title=" Informatics Student"
-  handle="javicodes"
-  status="Online"
-  contactText="Contact Me"
-  avatarUrl="/assets/lanyard/about/dappa1.jpeg"
-  miniAvatarUrl="/assets/lanyard/dappa.jpeg"
-  showUserInfo={false}
-  enableTilt={true}
-  enableMobileTilt={false}
-  behindGlowColor="rgba(125,190,255,0.67)"
-  behindGlowSize="50%"
-  iconUrl="/assets/lanyard/iconpattern.png"
-  behindGlowEnabled
-  innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
-/>
-</div>
-    </div>
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-    {/* Right */}
-    <div className="lg:col-span-7 flex flex-col justify-center">
+      {/* Left - FOTO */}
+      <div className="lg:col-span-5 flex justify-center items-center">
+        <div className="w-[280px] sm:w-[320px] lg:w-full lg:max-w-[420px] rounded-3xl mx-auto">
 
-      <p className="text-[#696969] uppercase tracking-[6px] font-semibold">
-        About Me
-      </p>
+          <ProfileCard
+            name="Daffa Ravi"
+            title="Informatics Student"
+            handle="javicodes"
+            status="Online"
+            contactText="Contact Me"
+            avatarUrl="/assets/lanyard/about/dappa1.jpeg"
+            miniAvatarUrl="/assets/lanyard/dappa.jpeg"
+            showUserInfo={false}
+            enableTilt={true}
+            enableMobileTilt={false}
+            behindGlowColor="rgba(125,190,255,0.67)"
+            behindGlowSize="50%"
+            iconUrl="/assets/lanyard/iconpattern.png"
+            behindGlowEnabled={true}
+            innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
+          />
 
-      <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mt-4 leading-tight">
-        Passionate About
-        <br />
-        Building Digital
-        <span className="text-[#9CA3AF]"> Experiences.</span>
-      </h2>
-
-      <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-6 md:mt-8">
-        Hello! I'm <span className="text-white font-semibold">Daffa Ravi Ferdiansyah</span>,
-        a Informatics Student who enjoys creating modern websites and web
-        applications with clean, responsive, and user-friendly interfaces.
-        I love turning ideas into real products through efficient code,
-        thoughtful design, and continuous learning.
-      </p>
-
-      <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-5 md:mt-6">
-        Besides web development, I'm also passionate about Artificial
-        Intelligence, interactive user experiences, and exploring new
-        technologies that can solve real-world problems. Every project is an
-        opportunity for me to learn, improve, and build something meaningful.
-      </p>
-
-      <div className="flex flex-wrap gap-7 sm:gap-8 mt-8 md:mt-12">
-
-        <div>
-          <h3 className="text-4xl sm:text-5xl font-bold text-white">3+</h3>
-          <p className="text-gray-500 mt-2">Projects Built</p>
         </div>
+      </div>
 
-        <div>
-          <h3 className="text-4xl sm:text-5xl font-bold text-white">2+</h3>
-          <p className="text-gray-500 mt-2">Certificates</p>
-        </div>
+      {/* Right - ABOUT */}
+      <div className="lg:col-span-7 flex flex-col justify-center">
 
-        <div>
-          <h3 className="text-4xl sm:text-5xl font-bold text-white">∞</h3>
-          <p className="text-gray-500 mt-2">Learning Journey</p>
+        <p className="text-[#696969] uppercase tracking-[6px] font-semibold">
+          About Me
+        </p>
+
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mt-4 leading-tight">
+          Passionate About
+          <br />
+          Building Digital
+          <span className="text-[#9CA3AF]"> Experiences.</span>
+        </h2>
+
+        <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-6 md:mt-8">
+          Hello! I'm{" "}
+          <span className="text-white font-semibold">
+            Daffa Ravi Ferdiansyah
+          </span>
+          , a Informatics Student who enjoys creating modern websites and web
+          applications with clean, responsive, and user-friendly interfaces.
+          I love turning ideas into real products through efficient code,
+          thoughtful design, and continuous learning.
+        </p>
+
+        <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-5 md:mt-6">
+          Besides web development, I'm also passionate about Artificial
+          Intelligence, interactive user experiences, and exploring new
+          technologies that can solve real-world problems. Every project is
+          an opportunity for me to learn, improve, and build something
+          meaningful.
+        </p>
+
+        {/* Stats */}
+        <div className="flex flex-wrap gap-7 sm:gap-8 mt-8 md:mt-12">
+
+          <div>
+            <h3 className="text-4xl sm:text-5xl font-bold text-white">
+              3+
+            </h3>
+            <p className="text-gray-500 mt-2">
+              Projects Built
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-4xl sm:text-5xl font-bold text-white">
+              2+
+            </h3>
+            <p className="text-gray-500 mt-2">
+              Certificates
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-4xl sm:text-5xl font-bold text-white">
+              ∞
+            </h3>
+            <p className="text-gray-500 mt-2">
+              Learning Journey
+            </p>
+          </div>
+
         </div>
 
       </div>
 
     </div>
-
   </div>
 </section>
       <section
