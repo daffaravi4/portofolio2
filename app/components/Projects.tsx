@@ -6,14 +6,14 @@ import { X, ExternalLink, ArrowUpRight, Plus } from "lucide-react";
 import { michroma } from "@/app/font";
 const projects = [
   {
-    title: "Coming Soon",
+    title: "E-Commerce UI Design",
     description:
-      "A new project is currently being developed and will be showcased here.",
-    category: "PROJECT",
+      "A modern e-commerce website interface designed in Figma, featuring Home, Shop, About, Contact, and Login pages.",
+    category: "UI/UX DESIGN",
     year: "2026",
-    image: "",
+    image: "/assets/lanyard/projects/ecommerce-figma.png",
     tech: [],
-    demo: "",
+    demo: "https://www.figma.com/design/o9NIAvFYMGHta8JD9wfTaY/Untitled?node-id=0-1&m=dev&t=Sy01OyfbdQ9eqZu7-1",
     github: "",
   },
   {
