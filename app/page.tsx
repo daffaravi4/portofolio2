@@ -115,7 +115,7 @@ const [closingIntro, setClosingIntro] = useState(false);
       >
 
      {/* Desktop */}
-        <div className="absolute inset-0 z-10 hidden lg:block">
+        <div className="absolute inset-0 z-40 hidden lg:block">
      <Lanyard position={[0, 0, 17]} gravity={[0, -40, 0]}/>
      </div>
   {/* Mobile */}
