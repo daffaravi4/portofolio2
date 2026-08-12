@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { michroma } from "@/app/font";
@@ -38,6 +38,12 @@ const FOLD_TEXT_STYLES = `.fold-text {
   user-select: text;
 }
 
+@media (max-width: 767px) {
+  .fold-text {
+    font-size: 55px !important;
+  }
+}
+
 .fold-text-sr-only {
   position: absolute;
   width: 1px;
@@ -56,6 +62,7 @@ const FOLD_TEXT_STYLES = `.fold-text {
 
 .fold-text-line {
   display: block;
+  text-align: center;
 }
 
 .fold-text-whitespace {
@@ -109,6 +116,12 @@ const FOLD_TEXT_STYLES = `.fold-text {
 .fold-text-piece[data-fold-hinge='right']::after {
   background: linear-gradient(270deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.22) 42%, rgba(255, 255, 255, 0.26) 100%);
 }
+  /* MOBILE */
+@media (max-width: 767px) {
+  .fold-text {
+    --fold-text-font-size: 15px;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .fold-text-piece {
@@ -122,7 +135,7 @@ const FOLD_TEXT_STYLES = `.fold-text {
 `;
 
 const FoldText = ({
-  text = 'Welcome to my\nPortofolio Website', onComplete,
+  text = 'WELCOME\nTO\nMY PORTOFOLIO\nWEBSITE', onComplete,
   splitBy = 'line',
   hinge = 'top',
   duration = 0.65,
@@ -138,6 +151,18 @@ const FoldText = ({
   style = {}
 }) => {
   const rootRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  handleResize();
+  window.addEventListener('resize', handleResize);
+
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
   const timelineRef = useRef(null);
   const hingeConfig = HINGE_CONFIG[hinge] || HINGE_CONFIG.top;
   const safeCrease = clamp(creaseShading, 0, 1);
@@ -281,13 +306,13 @@ hingeConfig.rotateY,
 onComplete
   ]);
 
-  const rootStyle = {
-    '--fold-text-font-size': typeof fontSize === 'number' ? `${fontSize}px` : fontSize,
-    '--fold-text-font-weight': fontWeight,
-    '--fold-text-color': color,
-    ...style
-  };
-
+ const rootStyle = {
+  '--fold-text-font-size':
+    typeof fontSize === 'number' ? `${fontSize}px` : fontSize,
+  '--fold-text-font-weight': fontWeight,
+  '--fold-text-color': color,
+  ...style
+};
   return (
     <>
       <style>{FOLD_TEXT_STYLES}</style>

@@ -51,7 +51,7 @@ export default function Certificates() {
             </p>
 
             <h2
-  className={`${michroma.className} text-4xl font-bold text-white md:text-5xl`}
+  className={`${michroma.className} text-4xl font-bold text-white mt-4 md:text-5xl lg:text-[5.2rem] xl:text-[6rem] lg:whitespace-nowrap`}
 >
   My Certificates
 </h2>

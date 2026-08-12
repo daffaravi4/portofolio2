@@ -115,7 +115,7 @@ export default function Skills() {
       </p>
 
       <h2
-  className={`${michroma.className} text-4xl font-bold text-white mt-4 md:text-5xl`}
+  className={`${michroma.className} text-4xl font-bold text-white mt-4 md:text-5xl lg:text-[5.2rem] xl:text-[6rem] leading-[1.05] lg:whitespace-nowrap`}
 >
   Technologies I Use
 </h2>

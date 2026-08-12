@@ -43,7 +43,7 @@ export default function Contact() {
           </p>
 
           <h2
-  className={`${michroma.className} text-5xl font-bold text-white md:text-6xl`}
+  className={`${michroma.className} text-4xl font-bold text-white mt-4 md:text-5xl lg:text-[5.2rem] xl:text-[6rem] lg:whitespace-nowrap`}
 >
   Let's Work Together
 </h2>

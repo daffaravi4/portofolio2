@@ -72,7 +72,7 @@ export default function Projects() {
             </p>
 
             <h2
-  className={`${michroma.className} text-4xl font-bold text-white md:text-5xl`}
+  className={`${michroma.className} text-4xl font-bold text-white md:text-5xl lg:text-[5.2rem] xl:text-[6rem] leading-[1.05] lg:whitespace-nowrap`}
 >
   Featured Projects
 </h2>

@@ -115,7 +115,7 @@ const [closingIntro, setClosingIntro] = useState(false);
 
      {/* Desktop */}
         <div className="absolute inset-0 z-10 hidden lg:block">
-     <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]}/>
+     <Lanyard position={[0, 0, 16]} gravity={[0, -40, 0]}/>
      </div>
   {/* Mobile */}
 <div className="relative z-10 block lg:hidden h-[600px] w-full">
@@ -125,7 +125,7 @@ const [closingIntro, setClosingIntro] = useState(false);
        <div className="relative z-20">
   <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
 
-    <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-[328px]">
+    <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-[328px] lg:-translate-y-10">
           
             
 
@@ -193,6 +193,21 @@ const [closingIntro, setClosingIntro] = useState(false);
                 direction="top"
                 className="text-base text-[#A1A1AA] sm:text-lg md:text-xl lg:text-2xl leading-7 md:leading-9 mb-8"
               />
+              <div className="flex flex-wrap items-center gap-4">
+
+  <span className="px-6 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-base lg:text-lg font-medium text-gray-200">
+    Tailwind CSS
+  </span>
+
+  <span className="px-6 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-base lg:text-lg font-medium text-gray-200">
+    Next.js
+  </span>
+
+  <span className="px-6 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-base lg:text-lg font-medium text-gray-200">
+    Three.js
+  </span>
+
+</div>
               </div>
               </div> {/* col-span-12 */}
 </div> {/* grid */}
@@ -203,13 +218,13 @@ const [closingIntro, setClosingIntro] = useState(false);
   id="about"
   className="min-h-screen flex items-center px-5 sm:px-8 md:px-16 lg:px-24 py-24 lg:py-0"
 >
-  <div className="w-full max-w-7xl mx-auto">
+  <div className="w-full max-w-7xl lg:max-w-[1550px] mx-auto">
 
-    <div className="grid grid-cols-1 lg:grid-cols-[420px_minmax(0,1fr)] gap-10 lg:gap-12 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-[460px_minmax(0,1fr)] gap-10 lg:gap-20 items-center">
 
       {/* Left - FOTO */}
       <div className="flex justify-start items-center">
-  <div className="w-[280px] sm:w-[320px] lg:w-[420px] rounded-3xl">
+        <div className="w-[280px] sm:w-[320px] lg:w-[460px] rounded-3xl">
 
           <ProfileCard
             name=""
@@ -234,20 +249,21 @@ const [closingIntro, setClosingIntro] = useState(false);
 
       {/* Right - ABOUT */}
       <div className="flex flex-col justify-center min-w-0">
+
         <p className="text-[#696969] uppercase tracking-[6px] font-semibold">
           About Me
         </p>
 
         <h2
-  className={`${michroma.className} text-3xl sm:text-4xl md:text-6xl font-bold text-white mt-4 leading-tight`}
->
-  Passionate About
-<br className="lg:hidden" />
-  Building Digital
-  <span className="text-[#9CA3AF]"> Experiences.</span>
-</h2>
+          className={`${michroma.className} text-3xl sm:text-4xl md:text-6xl lg:text-[5.2rem] xl:text-[6rem] font-bold text-white mt-4 leading-[1.05]`}
+        >
+          Passionate About
+          <br className="lg:hidden" />
+          Building Digital
+          <span className="text-[#9CA3AF]"> Experiences.</span>
+        </h2>
 
-        <p className="text-gray-400 text-[13px] text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-6 md:mt-8">
+        <p className="text-gray-400 text-[13px] text-sm sm:text-base md:text-xl lg:text-[1.25rem] xl:text-[1.35rem] leading-7 md:leading-9 lg:leading-10 mt-6 md:mt-8">
           Hello! I'm{" "}
           <span className="text-white font-semibold">
             Daffa Ravi Ferdiansyah
@@ -258,7 +274,7 @@ const [closingIntro, setClosingIntro] = useState(false);
           thoughtful design, and continuous learning.
         </p>
 
-        <p className="text-gray-400 text-sm sm:text-base md:text-xl leading-7 md:leading-9 mt-5 md:mt-6 lg:w-full">
+        <p className="text-gray-400 text-sm sm:text-base md:text-xl lg:text-[1.25rem] xl:text-[1.35rem] leading-7 md:leading-9 lg:leading-10 mt-5 md:mt-6 lg:w-full">
           Besides web development, I'm also passionate about Artificial
           Intelligence, interactive user experiences, and exploring new
           technologies that can solve real-world problems. Every project is
@@ -267,10 +283,10 @@ const [closingIntro, setClosingIntro] = useState(false);
         </p>
 
         {/* Stats */}
-        <div className="flex flex-wrap gap-7 sm:gap-8 mt-8 md:mt-12">
+        <div className="flex flex-wrap gap-7 sm:gap-8 lg:gap-14 mt-8 md:mt-12">
 
           <div>
-            <h3 className="text-4xl sm:text-5xl font-bold text-white">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
               3+
             </h3>
             <p className="text-gray-500 mt-2">
@@ -279,7 +295,7 @@ const [closingIntro, setClosingIntro] = useState(false);
           </div>
 
           <div>
-            <h3 className="text-4xl sm:text-5xl font-bold text-white">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
               2+
             </h3>
             <p className="text-gray-500 mt-2">
@@ -288,7 +304,7 @@ const [closingIntro, setClosingIntro] = useState(false);
           </div>
 
           <div>
-            <h3 className="text-4xl sm:text-5xl font-bold text-white">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
               ∞
             </h3>
             <p className="text-gray-500 mt-2">

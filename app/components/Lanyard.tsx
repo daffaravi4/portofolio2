@@ -18,7 +18,7 @@ import * as THREE from 'three';
 
 // replace with your own imports, see the usage snippet for details
 const cardGLB = '/assets/lanyard/card.glb';
-const lanyard = '/assets/lanyard/lanyard.png';
+const lanyard = '/assets/lanyard/lanyard4.png';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
@@ -188,6 +188,16 @@ function Band({
 
   const { nodes, materials } = useGLTF(cardGLB) as any;
   const texture = useTexture(lanyardImage || lanyard);
+  useEffect(() => {
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.RepeatWrapping;
+
+  texture.minFilter = THREE.LinearMipmapLinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+
+  texture.anisotropy = 16;
+  texture.needsUpdate = true;
+}, [texture]);
   // useTexture must be called unconditionally; use a blank pixel when an image
   // isn't supplied for a given face, then skip compositing it below.
   const frontTex = useTexture(frontImage || BLANK_PIXEL);
@@ -331,7 +341,7 @@ card.current.setAngvel(
 );
 
   curve.curveType = 'chordal';
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+ 
   });
 
   return (
@@ -433,7 +443,7 @@ card.current.setAngvel(
           resolution={isMobile ? [1000, 2000] : [1000, 1000]}
           useMap
           map={texture}
-          repeat={[-4, 1]}
+          repeat={[-2, 1]}
           lineWidth={lanyardWidth}
         />
       </mesh>
