@@ -6,12 +6,12 @@ import { X, ExternalLink, ArrowUpRight, Plus } from "lucide-react";
 import { michroma } from "@/app/font";
 const projects = [
   {
-    title: "E-Commerce UI Design",
+    title: "Car Store — Automotive E-Commerce UI/UX",
     description:
-      "A modern e-commerce website interface designed in Figma, featuring Home, Shop, About, Contact, and Login pages.",
+      "A modern car store website concept designed in Figma, featuring a premium automotive interface for browsing vehicles, viewing detailed car information, and completing a structured checkout and payment process. The design focuses on clean layouts, intuitive navigation, responsive interfaces, and a seamless user experience from product selection to payment.",
     category: "UI/UX DESIGN",
     year: "2026",
-    image: "/assets/lanyard/projects/ecommerce-figma.png",
+    image: "/assets/lanyard/projects/car-store.png",
     tech: [],
     demo: "https://www.figma.com/design/o9NIAvFYMGHta8JD9wfTaY/Untitled?node-id=0-1&m=dev&t=Sy01OyfbdQ9eqZu7-1",
     github: "",

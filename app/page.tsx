@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Lanyard from "./components/Lanyard";
+import ShapeGrid from "./components/ShapeGrid";
 import RotatingText from "./components/RotatingText";
 import SplitText from "./components/SplitText";
 import BlurText from "./components/BlurText";
@@ -14,6 +15,10 @@ import Skills from "./components/Skills";
 import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
+import dynamic from "next/dynamic";
+const FoldText = dynamic(() => import("./components/FoldText"), {
+  ssr: false,
+});
 
 export default function Home() {
   const video1Ref = useRef<HTMLVideoElement>(null);
@@ -23,6 +28,7 @@ export default function Home() {
   const [started, setStarted] = useState(false);
   const [showPortfolio, setShowPortfolio] = useState(false);
   const [video2Playing, setVideo2Playing] = useState(false);
+const [closingIntro, setClosingIntro] = useState(false);
 
   useEffect(() => {
     if (started && video2Ref.current) {
@@ -37,78 +43,37 @@ export default function Home() {
 
   return (
     <>
-      {/* VIDEO 3 - BACKGROUND */}
-      <video
-        ref={video3Ref}
-        src="/videos/raven-3new.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="fixed inset-0 w-full h-full object-cover -z-20"
-      />
+      {/* SHAPE GRID - BACKGROUND */}
+<div className="fixed inset-0 -z-20">
+  <ShapeGrid />
+</div>
 
       {!showPortfolio && (
   <div className="fixed inset-0 z-[100] bg-black overflow-hidden">
 
-    {/* VIDEO 1 */}
-{!video2Playing && (
-      <div className="absolute inset-0">
+    {/* FOLD TEXT */}
+{!showPortfolio && (
+  <div
+    className={`fixed inset-0 z-[100] bg-black overflow-hidden transition-opacity duration-700 ${
+      closingIntro ? "opacity-0" : "opacity-100"
+    }`}
+  >
+    <div className="absolute inset-0 bg-black flex items-center justify-center">
+      <FoldText
+  onComplete={() => {
+    setClosingIntro(true);
 
-        <video
-          ref={video1Ref}
-          src="/videos/raven-1.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          onLoadedMetadata={() => {
-    if (video1Ref.current) {
-      video1Ref.current.playbackRate = 1.6;
-    }
+    setTimeout(() => {
+      setShowPortfolio(true);
+    }, 700);
   }}
-          className="w-full h-full object-cover brightness-[0.7]"
-        />
-
-        {/* Overlay gelap */}
-         <div className="absolute inset-0 bg-black/20 pointer-events-none" />
-
-        {/* Tombol MASUK */}
-        <div className="absolute inset-0 flex items-end justify-center pb-16 sm:pb-20">
-          <button
-            onClick={() => {
-              setStarted(true);
-              video1Ref.current?.pause();
-
-              if (video2Ref.current) {
-                video2Ref.current.currentTime = 0;
-                video2Ref.current.play();
-              }
-            }}
-            className="
-              px-8 py-3
-              rounded-full
-              border border-white/40
-              bg-white/10
-              backdrop-blur-md
-              text-white
-              text-sm sm:text-base
-              font-semibold
-              tracking-[4px]
-              uppercase
-              transition-all duration-300
-              hover:bg-white
-              hover:text-black
-              hover:scale-105
-            "
-          >
-            OPEN PORTFOLIO
-          </button>
-        </div>
-
-      </div>
-    )}
-
+  style={{
+    fontFamily: michroma.style.fontFamily,
+  }}
+/>
+    </div>
+  </div>
+)}
     
     {/* VIDEO 2 */}
 <video
@@ -150,7 +115,7 @@ export default function Home() {
 
      {/* Desktop */}
         <div className="absolute inset-0 z-10 hidden lg:block">
-     <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]}/>
+     <Lanyard position={[0, 0, 18]} gravity={[0, -40, 0]}/>
      </div>
   {/* Mobile */}
 <div className="relative z-10 block lg:hidden h-[600px] w-full">

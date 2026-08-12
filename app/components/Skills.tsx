@@ -29,13 +29,13 @@ const skillCategories = [
   {
     title: "Frontend",
     skills: [
-      { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
-      { name: "CSS3", icon: FaCss3Alt, color: "#1572B6" },
-      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-      { name: "React", icon: SiReact, color: "#61DAFB" },
-      { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "HTML5", icon: SiHtml5,},
+      { name: "CSS3", icon: FaCss3Alt,},
+      { name: "JavaScript", icon: SiJavascript,},
+      { name: "TypeScript", icon: SiTypescript,},
+      { name: "React", icon: SiReact,},
+      { name: "Next.js", icon: SiNextdotjs,},
+      { name: "Tailwind CSS", icon: SiTailwindcss,},
     ],
   },
   {
@@ -83,18 +83,17 @@ const skillCategories = [
 type SkillBadgeProps = {
   icon: React.ElementType;
   name: string;
-  color: string;
+  
 };
 
-function SkillBadge({ icon: Icon, name, color }: SkillBadgeProps) {
+function SkillBadge({ icon: Icon, name, }: SkillBadgeProps) {
   return (
     <div className="flex flex-col items-center gap-3 text-white group">
 
-      <Icon
-        size={45}
-        style={{ color }}
-        className="transition-transform duration-300 group-hover:scale-125"
-      />
+     <Icon
+  size={45}
+  className="text-white transition-all duration-300 group-hover:scale-125"
+/>
 
       <span className="text-sm text-gray-300 text-center">
         {name}
@@ -132,7 +131,6 @@ export default function Skills() {
                 key={skill.name}
                 icon={skill.icon}
                 name={skill.name}
-                color={skill.color}
               />
             ))
           )}
