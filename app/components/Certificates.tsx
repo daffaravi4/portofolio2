@@ -1,8 +1,8 @@
 "use client";
-import { michroma } from "@/app/font";
 import { useState } from "react";
 import Image from "next/image";
 import { X, ExternalLink } from "lucide-react";
+import { michroma, inter } from "@/app/font";
 
 const certificates = [
   {
@@ -56,7 +56,7 @@ export default function Certificates() {
   My Certificates
 </h2>
 
-            <p className="mt-5 max-w-2xl text-gray-400">
+            <p className={`${inter.className} mt-5 max-w-2xl text-gray-400`}>
               These certificates represent my continuous learning journey
               in web development, programming, cloud computing, and
               emerging technologies.

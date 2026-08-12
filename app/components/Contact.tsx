@@ -1,5 +1,5 @@
 "use client";
-import { michroma } from "@/app/font";
+import { michroma, inter } from "@/app/font";
 import {
   FaGithub,
   FaLinkedin,
@@ -48,7 +48,7 @@ export default function Contact() {
   Let's Work Together
 </h2>
 
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-400">
+          <p className={`${inter.className} mt-6 max-w-3xl text-lg leading-8 text-gray-400`}>
             I'm always open to discussing new opportunities,
             collaborating on exciting projects, or simply
             connecting with fellow developers.

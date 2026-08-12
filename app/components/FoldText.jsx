@@ -38,12 +38,6 @@ const FOLD_TEXT_STYLES = `.fold-text {
   user-select: text;
 }
 
-@media (max-width: 767px) {
-  .fold-text {
-    font-size: 55px !important;
-  }
-}
-
 .fold-text-sr-only {
   position: absolute;
   width: 1px;
@@ -116,12 +110,7 @@ const FOLD_TEXT_STYLES = `.fold-text {
 .fold-text-piece[data-fold-hinge='right']::after {
   background: linear-gradient(270deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.22) 42%, rgba(255, 255, 255, 0.26) 100%);
 }
-  /* MOBILE */
-@media (max-width: 767px) {
-  .fold-text {
-    --fold-text-font-size: 15px;
-  }
-}
+  
 
 @media (prefers-reduced-motion: reduce) {
   .fold-text-piece {
@@ -144,14 +133,14 @@ const FoldText = ({
   perspective = 700,
   creaseShading = 0.55,
   trigger = 'mount',
-  fontSize = 80,
+  fontSize = 60,
   fontWeight = 800,
   color = '#f7f2e8',
   className = '',
   style = {}
 }) => {
   const rootRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(null);
 
 useEffect(() => {
   const handleResize = () => {
@@ -308,7 +297,13 @@ onComplete
 
  const rootStyle = {
   '--fold-text-font-size':
-    typeof fontSize === 'number' ? `${fontSize}px` : fontSize,
+    isMobile === null
+      ? '38px'
+      : isMobile
+        ? '38px'
+        : typeof fontSize === 'number'
+          ? `${fontSize}px`
+          : fontSize,
   '--fold-text-font-weight': fontWeight,
   '--fold-text-color': color,
   ...style

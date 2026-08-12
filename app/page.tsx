@@ -10,12 +10,13 @@ import BlurText from "./components/BlurText";
 import Navbar from "./components/navbar.jsx";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from "react-icons/fa";
 import ProfileCard from "./components/ProfileCard";
-import { michroma } from "@/app/font";
+import { michroma, inter } from "@/app/font";
 import Skills from "./components/Skills";
 import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import dynamic from "next/dynamic";
+import ScrollVelocity from "./components/ScrollVelocity";
 const FoldText = dynamic(() => import("./components/FoldText"), {
   ssr: false,
 });
@@ -110,16 +111,16 @@ const [closingIntro, setClosingIntro] = useState(false);
 
       <section
         id="home"
-        className="relative min-h-screen overflow-hidden"
+        className="relative min-h-screen overflow-visible"
       >
 
      {/* Desktop */}
         <div className="absolute inset-0 z-10 hidden lg:block">
-     <Lanyard position={[0, 0, 16]} gravity={[0, -40, 0]}/>
+     <Lanyard position={[0, 0, 17]} gravity={[0, -40, 0]}/>
      </div>
   {/* Mobile */}
 <div className="relative z-10 block lg:hidden h-[600px] w-full">
-  <Lanyard position={[3, 0, 12]} gravity={[0, -40, 0]} />
+  <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
 </div>
       
        <div className="relative z-20">
@@ -130,12 +131,12 @@ const [closingIntro, setClosingIntro] = useState(false);
             
 
               <div className="flex items-center gap-3 mb-6" >
-              <h1 className="text-3xl text-white font-bold" >I`m Ready For </h1>
+              <h1 className="text-2xl text-white font-bold" >I`m Ready For </h1>
       
               <RotatingText 
               
                texts={['Web Development', 'Web Design', 'AI Developer', 'Web Programming']}
-  mainClassName="px-2 sm:px-2 md:px-3 bg-[#696969] text-white overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-2xl font-bold inline-flex"
+  mainClassName={`${michroma.className} px-2 sm:px-2 md:px-3 bg-[#696969] text-white overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-xl sm:text-2xl font-bold inline-flex`}
   staggerFrom="last"
   initial={{ y: "100%" }}
   animate={{ y: 0 }}
@@ -155,7 +156,7 @@ const [closingIntro, setClosingIntro] = useState(false);
  <SplitText
  key={showPortfolio ? "visible" : "hidden"}
   text="Hello, I'm DAFFA RAVI FERDIANSYAH"
-  className={`${michroma.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-left text-[#FFFFFF] leading-[1.15] lg:leading-tight break-words`}
+  className={`${michroma.className} text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-left text-[#FFFFFF] leading-[1.15] lg:leading-tight break-words`}
   delay={50}
   duration={1.25}
   ease="power3.out"
@@ -186,15 +187,15 @@ const [closingIntro, setClosingIntro] = useState(false);
 
             <div>
               <BlurText
-              key={showPortfolio ? "blur-visible" : "blur-hidden"}
-                text="Passionate Informatics Student focused on building responsive, scalable, and user-friendly web applications using React, Next.js, Laravel, and python.Always eager to learn and create impactful digital solutions."
-                delay={50}
-                animateBy="words"
-                direction="top"
-                className="text-base text-[#A1A1AA] sm:text-lg md:text-xl lg:text-2xl leading-7 md:leading-9 mb-8"
-              />
-              <div className="flex flex-wrap items-center gap-4">
+  key={showPortfolio ? "blur-visible" : "blur-hidden"}
+  text="Passionate Informatics Student focused on building responsive, scalable, and user-friendly web applications using React, Next.js, Laravel, and Python. Always eager to learn and create impactful digital solutions."
+  delay={50}
+  animateBy="words"
+  direction="top"
+  className={`${inter.className} text-base text-[#A1A1A1] sm:text-lg md:text-xl lg:text-2xl leading-7 md:leading-9 mb-8`}
+/>
 
+<div className="flex flex-wrap items-center gap-4">
   <span className="px-6 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-base lg:text-lg font-medium text-gray-200">
     Tailwind CSS
   </span>
@@ -213,7 +214,12 @@ const [closingIntro, setClosingIntro] = useState(false);
 </div> {/* grid */}
 </div> {/* relative */}
 </section>
-            
+
+{/* Scroll Velocity */}
+ <div className="relative z-30 -translate-y-20 overflow-visible">
+  <ScrollVelocity />
+</div>
+
      <section
   id="about"
   className="min-h-screen flex items-center px-5 sm:px-8 md:px-16 lg:px-24 py-24 lg:py-0"
@@ -223,7 +229,7 @@ const [closingIntro, setClosingIntro] = useState(false);
     <div className="grid grid-cols-1 lg:grid-cols-[460px_minmax(0,1fr)] gap-10 lg:gap-20 items-center">
 
       {/* Left - FOTO */}
-      <div className="flex justify-start items-center">
+      <div className="flex justify-center lg:justify-start items-center">
         <div className="w-[280px] sm:w-[320px] lg:w-[460px] rounded-3xl">
 
           <ProfileCard
@@ -250,9 +256,9 @@ const [closingIntro, setClosingIntro] = useState(false);
       {/* Right - ABOUT */}
       <div className="flex flex-col justify-center min-w-0">
 
-        <p className="text-[#696969] uppercase tracking-[6px] font-semibold">
-          About Me
-        </p>
+        <p className={`${inter.className} text-[#696969] uppercase tracking-[6px] font-semibold`}>
+  About Me
+</p>
 
         <h2
           className={`${michroma.className} text-3xl sm:text-4xl md:text-6xl lg:text-[5.2rem] xl:text-[6rem] font-bold text-white mt-4 leading-[1.05]`}
@@ -263,24 +269,28 @@ const [closingIntro, setClosingIntro] = useState(false);
           <span className="text-[#9CA3AF]"> Experiences.</span>
         </h2>
 
-        <p className="text-gray-400 text-[13px] text-sm sm:text-base md:text-xl lg:text-[1.25rem] xl:text-[1.35rem] leading-7 md:leading-9 lg:leading-10 mt-6 md:mt-8">
-          Hello! I'm{" "}
-          <span className="text-white font-semibold">
-            Daffa Ravi Ferdiansyah
-          </span>
-          , a Informatics Student who enjoys creating modern websites and web
-          applications with clean, responsive, and user-friendly interfaces.
-          I love turning ideas into real products through efficient code,
-          thoughtful design, and continuous learning.
-        </p>
+        <p
+  className={`${inter.className} text-gray-400 text-sm sm:text-base md:text-xl lg:text-[1.25rem] xl:text-[1.35rem] leading-7 md:leading-9 lg:leading-10 mt-6 md:mt-8`}
+>
+  Hello! I'm{" "}
+  <span className="text-white font-semibold">
+    Daffa Ravi Ferdiansyah
+  </span>
+  , a Informatics Student who enjoys creating modern websites and web
+  applications with clean, responsive, and user-friendly interfaces.
+  I love turning ideas into real products through efficient code,
+  thoughtful design, and continuous learning.
+</p>
 
-        <p className="text-gray-400 text-sm sm:text-base md:text-xl lg:text-[1.25rem] xl:text-[1.35rem] leading-7 md:leading-9 lg:leading-10 mt-5 md:mt-6 lg:w-full">
-          Besides web development, I'm also passionate about Artificial
-          Intelligence, interactive user experiences, and exploring new
-          technologies that can solve real-world problems. Every project is
-          an opportunity for me to learn, improve, and build something
-          meaningful.
-        </p>
+<p
+  className={`${inter.className} text-gray-400 text-sm sm:text-base md:text-xl lg:text-[1.25rem] xl:text-[1.35rem] leading-7 md:leading-9 lg:leading-10 mt-5 md:mt-6 lg:w-full`}
+>
+  Besides web development, I'm also passionate about Artificial
+  Intelligence, interactive user experiences, and exploring new
+  technologies that can solve real-world problems. Every project is
+  an opportunity for me to learn, improve, and build something
+  meaningful.
+</p>
 
         {/* Stats */}
         <div className="flex flex-wrap gap-7 sm:gap-8 lg:gap-14 mt-8 md:mt-12">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { X, ExternalLink, ArrowUpRight, Plus } from "lucide-react";
-import { michroma } from "@/app/font";
+import { michroma, inter } from "@/app/font";
 const projects = [
   {
     title: "Car Store — Automotive E-Commerce UI/UX",
@@ -53,9 +53,19 @@ const projects = [
 
 export default function Projects() {
   const [selected, setSelected] = useState<
-    (typeof projects)[0] | null
-  >(null);
+  (typeof projects)[0] | null
+>(null);
 
+const [isClosing, setIsClosing] = useState(false);
+
+const closeModal = () => {
+  setIsClosing(true);
+
+  setTimeout(() => {
+    setSelected(null);
+    setIsClosing(false);
+  }, 350);
+};
   return (
     <>
       {/* Projects Section */}
@@ -77,7 +87,7 @@ export default function Projects() {
   Featured Projects
 </h2>
 
-            <p className="mt-5 max-w-3xl leading-7 text-gray-400">
+            <p className={`${inter.className} mt-5 max-w-3xl leading-7 text-gray-400`}>
               A collection of projects I've built while exploring
               web development, programming, and emerging technologies.
             </p>
@@ -254,30 +264,38 @@ export default function Projects() {
 
       {/* Modal */}
       {selected && (
-        <div
-          className="
-            fixed inset-0 z-[999]
-            flex items-center justify-center
-            bg-black/80 p-5
-            backdrop-blur-md
-          "
-          onClick={() => setSelected(null)}
-        >
+  <div
+    className={`
+      fixed inset-0 z-[999]
+      flex items-center justify-center
+      bg-black/80 p-5
+      backdrop-blur-md
+      transition-all duration-350 ease-out
+      ${isClosing ? "opacity-0" : "opacity-100"}
+    `}
+    onClick={closeModal}
+  >
           <div
-            className="
-              relative max-h-[95vh] w-full max-w-5xl
-              overflow-y-auto
-              rounded-2xl
-              border border-white/10
-              bg-[#151515]
-              p-5 md:p-7
-            "
-            onClick={(e) => e.stopPropagation()}
-          >
+  className={`
+    relative max-h-[95vh] w-full max-w-5xl
+    overflow-y-auto
+    rounded-2xl
+    border border-white/10
+    bg-[#151515]
+    p-5 md:p-7
+    transition-all duration-350 ease-out
+    ${
+      isClosing
+        ? "opacity-0 scale-95 translate-y-4"
+        : "opacity-100 scale-100 translate-y-0"
+    }
+  `}
+  onClick={(e) => e.stopPropagation()}
+>
 
             {/* Close */}
-            <button
-              onClick={() => setSelected(null)}
+           <button
+  onClick={closeModal}
               className="
                 absolute right-4 top-4 z-20
                 rounded-full
