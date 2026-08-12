@@ -120,7 +120,7 @@ const foldCompletedRef = useRef(false);
 
      {/* Desktop */}
         <div className="absolute inset-0 z-40 hidden lg:block">
-     <Lanyard position={[0, 0, 19]} gravity={[0, -40, 0]}/>
+     <Lanyard position={[0, 0, 17]} gravity={[0, -40, 0]}/>
      </div>
   {/* Mobile */}
 <div className="relative z-10 block lg:hidden h-[600px] w-full">
@@ -130,7 +130,7 @@ const foldCompletedRef = useRef(false);
        <div className="relative z-20">
   <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
 
-    <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-[250px] lg:-translate-y-10">
+    <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-[300px] lg:-translate-y-10">
           
             
 
