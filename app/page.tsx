@@ -30,6 +30,8 @@ export default function Home() {
   const [showPortfolio, setShowPortfolio] = useState(false);
   const [video2Playing, setVideo2Playing] = useState(false);
 const [closingIntro, setClosingIntro] = useState(false);
+const [showFoldText, setShowFoldText] = useState(true);
+const foldCompletedRef = useRef(false);
 
   useEffect(() => {
     if (started && video2Ref.current) {
@@ -49,30 +51,32 @@ const [closingIntro, setClosingIntro] = useState(false);
   <ShapeGrid />
 </div>
 
-      {!showPortfolio && (
-  <div className="fixed inset-0 z-[100] bg-black overflow-hidden">
-
-    {/* FOLD TEXT */}
-{!showPortfolio && (
+      
+  
+{/* FOLD TEXT INTRO */}
+{showFoldText && (
   <div
-    className={`fixed inset-0 z-[100] bg-black overflow-hidden transition-opacity duration-700 ${
-      closingIntro ? "opacity-0" : "opacity-100"
+    className={`fixed inset-0 z-[100] bg-black flex items-center justify-center transition-opacity duration-700 ${
+      closingIntro ? "opacity-0 pointer-events-none" : "opacity-100"
     }`}
   >
-    <div className="absolute inset-0 bg-black flex items-center justify-center">
-      <FoldText
-  onComplete={() => {
-    setClosingIntro(true);
+    <FoldText
+      onComplete={() => {
+        // Cegah onComplete dipanggil lebih dari sekali
+        if (foldCompletedRef.current) return;
 
-    setTimeout(() => {
-      setShowPortfolio(true);
-    }, 700);
-  }}
-  style={{
-    fontFamily: michroma.style.fontFamily,
-  }}
-/>
-    </div>
+        foldCompletedRef.current = true;
+
+        setClosingIntro(true);
+
+        setTimeout(() => {
+          setShowFoldText(false);
+        }, 700);
+      }}
+      style={{
+        fontFamily: michroma.style.fontFamily,
+      }}
+    />
   </div>
 )}
     
@@ -101,8 +105,8 @@ const [closingIntro, setClosingIntro] = useState(false);
 }`}
 />
 
-  </div>
-)}
+  
+
 
       {/* Overlay agar teks tetap terbaca */}
       <div className="fixed inset-0 -z-10 bg-black/30 pointer-events-none" />
@@ -116,7 +120,7 @@ const [closingIntro, setClosingIntro] = useState(false);
 
      {/* Desktop */}
         <div className="absolute inset-0 z-40 hidden lg:block">
-     <Lanyard position={[0, 0, 17]} gravity={[0, -40, 0]}/>
+     <Lanyard position={[0, 0, 19]} gravity={[0, -40, 0]}/>
      </div>
   {/* Mobile */}
 <div className="relative z-10 block lg:hidden h-[600px] w-full">
@@ -126,7 +130,7 @@ const [closingIntro, setClosingIntro] = useState(false);
        <div className="relative z-20">
   <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
 
-    <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-[328px] lg:-translate-y-10">
+    <div className="col-span-12 lg:col-span-6 flex flex-col justify-center px-6 lg:pl-[100px] mt-8 lg:mt-[250px] lg:-translate-y-10">
           
             
 
@@ -216,7 +220,7 @@ const [closingIntro, setClosingIntro] = useState(false);
 </section>
 
 {/* Scroll Velocity */}
- <div className="relative z-30 -translate-y-20 overflow-visible">
+<div className="relative z-30 -translate-y-20 lg:-translate-y-20 translate-y-10 overflow-visible">
   <ScrollVelocity />
 </div>
 
@@ -229,8 +233,8 @@ const [closingIntro, setClosingIntro] = useState(false);
     <div className="grid grid-cols-1 lg:grid-cols-[460px_minmax(0,1fr)] gap-10 lg:gap-20 items-center">
 
       {/* Left - FOTO */}
-      <div className="flex justify-center lg:justify-start items-center">
-        <div className="w-[280px] sm:w-[320px] lg:w-[460px] rounded-3xl">
+      <div className="flex justify-center lg:justify-start items-center translate-x-4 lg:translate-x-0">
+  <div className="w-[280px] sm:w-[320px] lg:w-[460px] rounded-3xl">
 
           <ProfileCard
             name=""

@@ -30,12 +30,18 @@ const renderWhitespace = (value, key) =>
 const FOLD_TEXT_STYLES = `.fold-text {
   display: inline-block;
   color: var(--fold-text-color, currentColor);
-  font-size: var(--fold-text-font-size, inherit);
+  font-size: 38px;
   font-weight: var(--fold-text-font-weight, inherit);
   line-height: 0.95;
   letter-spacing: -0.04em;
   white-space: pre-wrap;
   user-select: text;
+}
+
+@media (min-width: 768px) {
+  .fold-text {
+    font-size: var(--fold-text-font-size, 30px);
+  }
 }
 
 .fold-text-sr-only {
@@ -140,19 +146,8 @@ const FoldText = ({
   style = {}
 }) => {
   const rootRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(null);
-
-useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-
-  handleResize();
-  window.addEventListener('resize', handleResize);
-
-  return () => window.removeEventListener('resize', handleResize);
-}, []);
   const timelineRef = useRef(null);
+  const completedRef = useRef(false);
   const hingeConfig = HINGE_CONFIG[hinge] || HINGE_CONFIG.top;
   const safeCrease = clamp(creaseShading, 0, 1);
   const safePerspective = Math.max(120, perspective);
@@ -245,7 +240,15 @@ useEffect(() => {
   timelineRef.current = gsap.timeline({
     repeat: repeat ? -1 : 0,
     repeatDelay: repeat ? 0.75 : 0,
-    onComplete: repeat ? undefined : onComplete
+    onComplete: repeat
+      ? undefined
+      : () => {
+          if (completedRef.current) return;
+
+          completedRef.current = true;
+
+          onComplete?.();
+        }
   });
 
   timelineRef.current.fromTo(pieces, fromVars, toVars);
@@ -292,22 +295,18 @@ useEffect(() => {
     hingeConfig.origin,
 hingeConfig.rotateX,
 hingeConfig.rotateY,
-onComplete
   ]);
 
  const rootStyle = {
   '--fold-text-font-size':
-    isMobile === null
-      ? '38px'
-      : isMobile
-        ? '38px'
-        : typeof fontSize === 'number'
-          ? `${fontSize}px`
-          : fontSize,
+    typeof fontSize === 'number'
+      ? `${fontSize}px`
+      : fontSize,
   '--fold-text-font-weight': fontWeight,
   '--fold-text-color': color,
   ...style
-};
+}; 
+
   return (
     <>
       <style>{FOLD_TEXT_STYLES}</style>
