@@ -115,7 +115,7 @@ scrollerStyle = {}
     return (
       <div className={`${parallaxClassName} relative overflow-hidden`} style={parallaxStyle}>
         <motion.div
-            className={`${michroma.className} ${scrollerClassName} flex whitespace-nowrap text-center text-4xl font-bold tracking-[-0.02em] drop-shadow md:text-[5rem] md:leading-[5rem]`}
+            className={`${michroma.className} ${scrollerClassName} flex whitespace-nowrap text-center text-2xl font-bold tracking-[-0.02em] drop-shadow md:text-[4rem] md:leading-[5rem]`}
           style={{ x, ...scrollerStyle }}
         >
           {spans}

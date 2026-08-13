@@ -20,32 +20,32 @@ const cardData = [
   {
     id: "about",
     color: "#120F17",
-    title: "About Me",
-    description: "Get to know me",
+    title: "",
+    description: "",
     label: "Profile",
     icon: Fingerprint
   },
   {
     id: "skills",
     color: "#120F17",
-    title: "My Skills",
-    description: "Technologies I use",
+    title: "",
+    description: "",
     label: "Skills",
     icon: Braces
   },
   {
     id: "projects",
     color: "#120F17",
-    title: "Projects",
-    description: "Things I've built",
+    title: "",
+    description: "",
     label: "Projects",
     icon: PanelsTopLeft
   },
   {
     id: "certificates",
     color: "#120F17",
-    title: "Certificates",
-    description: "My achievements",
+    title: "",
+    description: "",
     label: "Certificates",
     icon: Award
   },
@@ -53,16 +53,16 @@ const cardData = [
     id: "contact",
     color: "#120F17",
     title: "Contact Me",
-    description: "Let's work together",
-    label: "Contact",
+    description: "",
+    label: "",
     icon: Send
   },
   {
     id: "currently",
     color: "#120F17",
     title: "Currently",
-    description: "Learning & building with Next.js, Python & AI",
-    label: "Currently",
+    description: "",
+    label: "",
     icon: Orbit
   }
 ];

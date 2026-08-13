@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import Image from "next/image";
 import Lanyard from "./components/Lanyard";
 import ShapeGrid from "./components/ShapeGrid";
@@ -31,9 +32,88 @@ const FoldText = dynamic(() => import("./components/FoldText"), {
 });
 
 export default function Home() {
- const [activePanel, setActivePanel] = useState<string | null>(null);
+  const [activePanel, setActivePanel] = useState<string | null>(null);
+
+  const bentoWrapperRef = useRef<HTMLDivElement>(null);
+  const panelWrapperRef = useRef<HTMLDivElement>(null);
+
+  const handleCardClick = (card: string) => {
+    if (!bentoWrapperRef.current) {
+      setActivePanel(card);
+      return;
+    }
+
+    gsap.to(bentoWrapperRef.current, {
+      opacity: 0,
+      y: -25,
+      scale: 0.97,
+      duration: 0.4,
+      ease: "power3.inOut",
+      onComplete: () => {
+        setActivePanel(card);
+      },
+    });
+  };
+
+  const handleBackToBento = () => {
+  gsap.to(panelWrapperRef.current, {
+    opacity: 0,
+    y: 25,
+    scale: 0.98,
+    duration: 0.4,
+    ease: "power3.inOut",
+    onComplete: () => {
+      setActivePanel(null);
+
+      requestAnimationFrame(() => {
+        bentoWrapperRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        gsap.fromTo(
+          bentoWrapperRef.current,
+          { opacity: 0, y: -25, scale: 0.97 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: "power3.out",
+          }
+        );
+      });
+    },
+  });
+};
+
+  useEffect(() => {
+    if (!activePanel) return;
+
+    requestAnimationFrame(() => {
+      if (!panelWrapperRef.current) return;
+
+      gsap.fromTo(
+        panelWrapperRef.current,
+        {
+          opacity: 0,
+          y: 30,
+          scale: 0.98,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: "power3.out",
+        }
+      );
+    });
+  }, [activePanel]);
+
   const renderActivePanel = () => {
-  switch (activePanel) {
+    switch (activePanel) {
+
     case "about":
       return (
         <section
@@ -146,7 +226,7 @@ export default function Home() {
  
 
             <button
-              onClick={() => setActivePanel(null)}
+              onClick={handleBackToBento}
               className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
             >
               ← Back to Bento
@@ -156,22 +236,20 @@ export default function Home() {
       );
 
           case "skills":
-      return (
-        <section className="min-h-screen py-24 px-5">
-          <div className="max-w-7xl mx-auto">
-            
-            <Skills />
+  return (
+    <div>
+      <Skills />
 
-            <button
-              onClick={() => setActivePanel(null)}
-              className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
-            >
-              ← Back to Bento
-            </button>
-
-          </div>
-        </section>
-      );
+      <div className="max-w-7xl mx-auto px-5">
+        <button
+          onClick={handleBackToBento}
+          className="mb-10 px-6 py-3 rounded-full border border-white/20 text-white"
+        >
+          ← Back to Bento
+        </button>
+      </div>
+    </div>
+  );
 
       case "projects":
   return (
@@ -181,7 +259,7 @@ export default function Home() {
         <Projects />
 
         <button
-          onClick={() => setActivePanel(null)}
+         onClick={handleBackToBento}
           className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
         >
           ← Back to Bento
@@ -198,7 +276,7 @@ export default function Home() {
             <Certificates />
 
             <button
-              onClick={() => setActivePanel(null)}
+              onClick={handleBackToBento}
               className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
             >
               ← Back to Bento
@@ -214,7 +292,7 @@ export default function Home() {
             <Contact />
 
             <button
-              onClick={() => setActivePanel(null)}
+              onClick={handleBackToBento}
               className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
             >
               ← Back to Bento
@@ -265,8 +343,8 @@ export default function Home() {
         </div>
 
         <button
-          onClick={() => setActivePanel(null)}
-          className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
+onClick={handleBackToBento}
+className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
         >
           ← Back to Bento
         </button>
@@ -491,17 +569,15 @@ const foldCompletedRef = useRef(false);
 
 {activePanel === null ? (
   <>
-    {/* MAGIC BENTO */}
-
-    <section className="min-h-screen px-5 sm:px-8 md:px-12 lg:px-24 py-24">
-      <div className="w-full">
-        <MagicBento
-  onCardClick={(card: string) => {
-    setActivePanel(card);
-  }}
-/>
-      </div>
-    </section>
+     <div ref={bentoWrapperRef}>
+      <section className="min-h-screen px-5 sm:px-8 md:px-12 lg:px-24 py-24">
+        <div className="w-full">
+          <MagicBento
+            onCardClick={handleCardClick}
+          />
+        </div>
+      </section>
+     </div>
     {/* JARAK SEBELUM FOOTER */}
 <div className="h-[25vh]" />
  {/* FOOTER */}
@@ -568,10 +644,10 @@ const foldCompletedRef = useRef(false);
 
 </>
 ) : (
-  <>
+  <div ref={panelWrapperRef}>
     {/* HALAMAN YANG DIPILIH */}
     {renderActivePanel()}
-  </>
+  </div>
 )}
 
     
