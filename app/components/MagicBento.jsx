@@ -1,10 +1,19 @@
 'use client'
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
+import { michroma, inter } from "@/app/font";
+import {
+  Fingerprint,
+  Braces,
+  PanelsTopLeft,
+  Award,
+  Send,
+  Orbit
+} from "lucide-react";
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '132, 0, 255';
+const DEFAULT_GLOW_COLOR = '255, 255, 255';
 const MOBILE_BREAKPOINT = 768;
 
 const cardData = [
@@ -13,42 +22,48 @@ const cardData = [
     color: "#120F17",
     title: "About Me",
     description: "Get to know me",
-    label: "Profile"
+    label: "Profile",
+    icon: Fingerprint
   },
   {
     id: "skills",
     color: "#120F17",
     title: "My Skills",
     description: "Technologies I use",
-    label: "Skills"
+    label: "Skills",
+    icon: Braces
   },
   {
     id: "projects",
     color: "#120F17",
     title: "Projects",
     description: "Things I've built",
-    label: "Projects"
+    label: "Projects",
+    icon: PanelsTopLeft
   },
   {
     id: "certificates",
     color: "#120F17",
     title: "Certificates",
     description: "My achievements",
-    label: "Certificates"
+    label: "Certificates",
+    icon: Award
   },
   {
     id: "contact",
     color: "#120F17",
     title: "Contact Me",
     description: "Let's work together",
-    label: "Contact"
+    label: "Contact",
+    icon: Send
   },
   {
-    id: "experience",
+    id: "currently",
     color: "#120F17",
-    title: "Journey",
-    description: "My learning journey",
-    label: "Journey"
+    title: "Currently",
+    description: "Learning & building with Next.js, Python & AI",
+    label: "Currently",
+    icon: Orbit
   }
 ];
 
@@ -459,7 +474,7 @@ const GlobalSpotlight = ({
 
 const BentoCardGrid = ({ children, gridRef }) => (
   <div
-    className="bento-section grid gap-3 p-3 w-full max-w-[90rem] select-none relative"
+    className={`${michroma.className} bento-section grid gap-3 p-3 w-[90%] mx-auto select-none relative`}
     style={{ fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.5rem)' }}
     ref={gridRef}
   >
@@ -502,20 +517,21 @@ const MagicBento = ({
 
   return (
     <>
-      <style>
+      <style suppressHydrationWarning>
         {`
+
           .bento-section {
             --glow-x: 50%;
             --glow-y: 50%;
             --glow-intensity: 0;
             --glow-radius: 200px;
-            --glow-color: ${glowColor};
+            --glow-color: 255, 255, 255;
             --border-color: #2F293A;
             --background-dark: #120F17;
             --white: hsl(0, 0%, 100%);
-            --purple-primary: rgba(132, 0, 255, 1);
-            --purple-glow: rgba(132, 0, 255, 0.2);
-            --purple-border: rgba(132, 0, 255, 0.8);
+            --purple-primary: rgba(255, 255, 255, 1);
+--purple-glow: rgba(255, 255, 255, 0.2);
+--purple-border: rgba(255, 255, 255, 0.8);
           }
           
           .card-responsive {
@@ -531,26 +547,27 @@ const MagicBento = ({
             }
           }
           
-          @media (min-width: 1024px) {
-            .card-responsive {
-              grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .card-responsive .card:nth-child(3) {
-              grid-column: span 2;
-              grid-row: span 2;
-            }
-            
-            .card-responsive .card:nth-child(4) {
-              grid-column: 1 / span 2;
-              grid-row: 2 / span 2;
-            }
-            
-            .card-responsive .card:nth-child(6) {
-              grid-column: 4;
-              grid-row: 3;
-            }
-          }
+        @media (min-width: 1024px) {
+  .card-responsive {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+
+  .card-responsive .card:nth-child(3) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .card-responsive .card:nth-child(4) {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 2;
+  }
+
+  .card-responsive .card:nth-child(6) {
+    grid-column: 4;
+    grid-row: 3;
+  }
+}
           
           .card--border-glow::after {
             content: '';
@@ -643,7 +660,8 @@ const MagicBento = ({
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-2">
           {cardData.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[280px] w-full max-w-full p-5 rounded-[20px] border border-solid font-light overflow-hidden transition-colors duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
+  const Icon = card.icon;
+            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[130px] w-full max-w-full p-4 rounded-[20px] border border-solid font-light overflow-hidden transition-colors duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? 'card--border-glow' : ''
             }`;
 
@@ -658,35 +676,61 @@ const MagicBento = ({
             };
 
             if (enableStars) {
-              return (
-                <ParticleCard
-                 onClick={() => onCardClick?.(card.id)}
-                  key={index}
-                  className={baseClassName}
-                  style={cardStyle}
-                  disableAnimations={shouldDisableAnimations}
-                  particleCount={particleCount}
-                  glowColor={glowColor}
-                  enableTilt={enableTilt}
-                  clickEffect={clickEffect}
-                  enableMagnetism={enableMagnetism}
-                >
-                  <div className="card__header flex justify-between gap-3 relative text-white">
-                    <span className="card__label text-base">{card.label}</span>
-                  </div>
-                  <div className="card__content flex flex-col relative text-white">
-                    <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
-                      {card.title}
-                    </h3>
-                    <p
-                      className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}
-                    >
-                      {card.description}
-                    </p>
-                  </div>
-                </ParticleCard>
-              );
-            }
+  return (
+    <ParticleCard
+      onClick={() => onCardClick?.(card.id)}
+      key={index}
+      className={baseClassName}
+      style={cardStyle}
+      disableAnimations={shouldDisableAnimations}
+      particleCount={particleCount}
+      glowColor={glowColor}
+      enableTilt={enableTilt}
+      clickEffect={clickEffect}
+      enableMagnetism={enableMagnetism}
+    >
+
+      {/* ICON TENGAH */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+  <Icon
+    size={80}
+    strokeWidth={1}
+    className="text-white/[20]"
+  />
+</div>
+      
+
+      {/* HEADER */}
+      <div className="card__header flex justify-between gap-3 relative text-white">
+        <span className="card__label text-xl sm:text-2xl">
+          {card.label}
+        </span>
+      </div>
+
+      {/* CONTENT */}
+      <div className="card__content flex flex-col relative text-white">
+        <h3
+          className={`card__title font-normal text-2xl sm:text-3xl m-0 mb-2 ${
+            textAutoHide ? 'text-clamp-1' : ''
+          }`}
+        >
+          {card.title}
+        </h3>
+
+        <p
+          className={`card__description text-base sm:text-lg leading-7 opacity-90 ${
+            textAutoHide ? 'text-clamp-2' : ''
+          }`}
+        >
+          {card.description}
+        </p>
+      </div>
+
+    </ParticleCard>
+  );
+}
+
+                 
 
             return (
               <div

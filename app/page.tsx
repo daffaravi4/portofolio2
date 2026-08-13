@@ -17,7 +17,6 @@ import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import dynamic from "next/dynamic";
 import MagicBento from "./components/MagicBento";
-import LogoLoop from './components/LogoLoop';
 import ScrollVelocity from "./components/ScrollVelocity";
 import {
   FaHtml5,
@@ -37,34 +36,114 @@ export default function Home() {
   switch (activePanel) {
     case "about":
       return (
-        <section id="about" className="min-h-screen py-24 px-5">
-          <div className="max-w-7xl mx-auto">
-            <ProfileCard
-              name=""
-              title=""
-              handle="javicodes"
-              status="Online"
-              contactText="Contact Me"
-              avatarUrl="/assets/lanyard/about/dappa1.jpeg"
-              miniAvatarUrl="/assets/lanyard/dappa.jpeg"
-              showUserInfo={false}
-              enableTilt={true}
-              enableMobileTilt={false}
-              behindGlowColor="rgba(125,190,255,0.67)"
-              behindGlowSize="50%"
-              iconUrl="/assets/lanyard/iconpattern.png"
-              behindGlowEnabled={true}
-              innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
-            />
+        <section
+  id="about"
+  className="min-h-screen flex items-center px-5 sm:px-8 md:px-16 lg:px-24 py-24 lg:py-0"
+>
+  <div className="w-full max-w-7xl lg:max-w-[1550px] mx-auto">
 
-            <h2 className={`${michroma.className} text-5xl text-white mt-10`}>
-              About Me
-            </h2>
+    <div className="grid grid-cols-1 lg:grid-cols-[460px_minmax(0,1fr)] gap-10 lg:gap-20 items-center">
 
-            <p className={`${inter.className} text-gray-400 text-xl mt-6`}>
-              Hello! I'm Daffa Ravi Ferdiansyah, an Informatics Student who
-              enjoys creating modern websites and web applications.
+      {/* Left - FOTO */}
+      <div className="flex justify-center lg:justify-start items-center translate-x-4 lg:translate-x-0">
+  <div className="w-[280px] sm:w-[320px] lg:w-[460px] rounded-3xl">
+
+          <ProfileCard
+            name=""
+            title=""
+            handle="javicodes"
+            status="Online"
+            contactText="Contact Me"
+            avatarUrl="/assets/lanyard/about/dappa1.jpeg"
+            miniAvatarUrl="/assets/lanyard/dappa.jpeg"
+            showUserInfo={false}
+            enableTilt={true}
+            enableMobileTilt={false}
+            behindGlowColor="rgba(125,190,255,0.67)"
+            behindGlowSize="50%"
+            iconUrl="/assets/lanyard/iconpattern.png"
+            behindGlowEnabled={true}
+            innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
+          />
+
+        </div>
+      </div>
+
+      {/* Right - ABOUT */}
+      <div className="flex flex-col justify-center min-w-0">
+
+        <p className={`${inter.className} text-[#696969] uppercase tracking-[6px] font-semibold`}>
+  About Me
+</p>
+
+        <h2
+          className={`${michroma.className} text-3xl sm:text-4xl md:text-6xl lg:text-[5.2rem] xl:text-[6rem] font-bold text-white mt-4 leading-[1.05]`}
+        >
+          Passionate About
+          <br className="lg:hidden" />
+          Building Digital
+          <span className="text-[#9CA3AF]"> Experiences.</span>
+        </h2>
+
+        <p
+  className={`${inter.className} text-gray-400 text-sm sm:text-base md:text-xl lg:text-[1.25rem] xl:text-[1.35rem] leading-7 md:leading-9 lg:leading-10 mt-6 md:mt-8`}
+>
+  Hello! I'm{" "}
+  <span className="text-white font-semibold">
+    Daffa Ravi Ferdiansyah
+  </span>
+  , a Informatics Student who enjoys creating modern websites and web
+  applications with clean, responsive, and user-friendly interfaces.
+  I love turning ideas into real products through efficient code,
+  thoughtful design, and continuous learning.
+</p>
+
+<p
+  className={`${inter.className} text-gray-400 text-sm sm:text-base md:text-xl lg:text-[1.25rem] xl:text-[1.35rem] leading-7 md:leading-9 lg:leading-10 mt-5 md:mt-6 lg:w-full`}
+>
+  Besides web development, I'm also passionate about Artificial
+  Intelligence, interactive user experiences, and exploring new
+  technologies that can solve real-world problems. Every project is
+  an opportunity for me to learn, improve, and build something
+  meaningful.
+</p>
+
+        {/* Stats */}
+        <div className="flex flex-wrap gap-7 sm:gap-8 lg:gap-14 mt-8 md:mt-12">
+
+          <div>
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
+              3+
+            </h3>
+            <p className="text-gray-500 mt-2">
+              Projects Built
             </p>
+          </div>
+
+          <div>
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
+              2+
+            </h3>
+            <p className="text-gray-500 mt-2">
+              Certificates
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
+              ∞
+            </h3>
+            <p className="text-gray-500 mt-2">
+              Learning Journey
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+ 
 
             <button
               onClick={() => setActivePanel(null)}
@@ -73,13 +152,14 @@ export default function Home() {
               ← Back to Bento
             </button>
           </div>
-        </section>
+</section>
       );
 
-    case "skills":
+          case "skills":
       return (
         <section className="min-h-screen py-24 px-5">
           <div className="max-w-7xl mx-auto">
+            
             <Skills />
 
             <button
@@ -88,25 +168,28 @@ export default function Home() {
             >
               ← Back to Bento
             </button>
+
           </div>
         </section>
       );
 
-    case "projects":
-      return (
-        <section className="min-h-screen py-24 px-5">
-          <div className="max-w-7xl mx-auto">
-            <Projects />
+      case "projects":
+  return (
+    <section className="min-h-screen py-24 px-5">
+      <div className="max-w-7xl mx-auto">
 
-            <button
-              onClick={() => setActivePanel(null)}
-              className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
-            >
-              ← Back to Bento
-            </button>
-          </div>
-        </section>
-      );
+        <Projects />
+
+        <button
+          onClick={() => setActivePanel(null)}
+          className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
+        >
+          ← Back to Bento
+        </button>
+
+      </div>
+    </section>
+  ); 
 
     case "certificates":
       return (
@@ -139,20 +222,63 @@ export default function Home() {
           </div>
         </section>
       );
+      case "currently":
+  return (
+    <section id="currently" className="min-h-screen py-24 px-5">
+      <div className="max-w-7xl mx-auto">
+        <h2 className={`${michroma.className} text-5xl text-white mt-10`}>
+          Currently
+        </h2>
+
+        <p className={`${inter.className} text-gray-400 text-xl mt-6`}>
+          Currently learning and building modern web applications,
+          full-stack projects, and AI-based applications.
+        </p>
+
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+            <h3 className="text-white text-lg font-medium">
+              Learning
+            </h3>
+            <p className="text-gray-400 mt-2">
+              Full Stack Development
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+            <h3 className="text-white text-lg font-medium">
+              Building
+            </h3>
+            <p className="text-gray-400 mt-2">
+              Web & AI Projects
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+            <h3 className="text-white text-lg font-medium">
+              Exploring
+            </h3>
+            <p className="text-gray-400 mt-2">
+              AI & Computer Vision
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => setActivePanel(null)}
+          className="mt-10 px-6 py-3 rounded-full border border-white/20 text-white"
+        >
+          ← Back to Bento
+        </button>
+      </div>
+    </section>
+  );
 
     default:
       return null;
   }
 };
-  const skillLogos = [
-  { node: <FaHtml5 />, title: "HTML5" },
-  { node: <FaCss3Alt />, title: "CSS3" },
-  { node: <FaJs />, title: "JavaScript" },
-  { node: <FaReact />, title: "React" },
-  { node: <FaNodeJs />, title: "Node.js" },
-  { node: <FaPython />, title: "Python" },
-] as const;
-
+ 
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const video3Ref = useRef<HTMLVideoElement>(null);
@@ -243,6 +369,10 @@ const foldCompletedRef = useRef(false);
       <div className="fixed inset-0 -z-10 bg-black/30 pointer-events-none" />
 
       <Navbar />
+{activePanel === null && (
+  <>
+    {/* HOME */}
+    
 
       <section
         id="home"
@@ -350,26 +480,21 @@ const foldCompletedRef = useRef(false);
 </div> {/* relative */}
 </section>
 
-{/* Logo Loop */}
-{activePanel === null && (
-  <div className="relative z-30 overflow-hidden py-8 -translate-y-32">
-    <LogoLoop
-      logos={skillLogos}
-      speed={80}
-      direction="left"
-      logoHeight={50}
-      gap={50}
-      pauseOnHover
-    />
-  </div>
+{/* Scroll Velocity */}
+<div className="relative z-30 -translate-y-20 lg:-translate-y-20 translate-y-10 overflow-visible">
+  <ScrollVelocity />
+</div>
+  </>
 )}
+
+
 
 {activePanel === null ? (
   <>
     {/* MAGIC BENTO */}
 
-    <section className="min-h-screen px-5 sm:px-8 md:px-16 lg:px-24 py-24">
-      <div className="max-w-7xl mx-auto">
+    <section className="min-h-screen px-5 sm:px-8 md:px-12 lg:px-24 py-24">
+      <div className="w-full">
         <MagicBento
   onCardClick={(card: string) => {
     setActivePanel(card);
@@ -377,11 +502,69 @@ const foldCompletedRef = useRef(false);
 />
       </div>
     </section>
+    {/* JARAK SEBELUM FOOTER */}
+<div className="h-[25vh]" />
+ {/* FOOTER */}
+<footer
+  className={`${michroma.className} border-t border-[#2F2F2F] bg-[#111111] px-5 sm:px-8 md:px-12 lg:px-24 py-10`}
+>
+  <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
-{/* Scroll Velocity */}
-<div className="relative z-30 -translate-y-20 lg:-translate-y-20 translate-y-10 overflow-visible">
-  <ScrollVelocity />
-</div>
+    {/* Kiri */}
+    <div className="text-center md:text-left">
+      <h3 className="text-white text-xl font-semibold">
+        DAFFA RAVI
+      </h3>
+
+      <p className="text-[#646464] text-sm mt-2">
+        Building. Learning. Improving.
+      </p>
+    </div>
+
+    {/* Tengah */}
+    <div className="flex items-center gap-6 text-sm">
+      <a
+        href="#home"
+        className="text-gray-400 hover:text-white transition-colors"
+      >
+        Home
+      </a>
+
+      <a
+        href="#about"
+        className="text-gray-400 hover:text-white transition-colors"
+      >
+        About
+      </a>
+
+      <a
+        href="#projects"
+        className="text-gray-400 hover:text-white transition-colors"
+      >
+        Projects
+      </a>
+
+      <a
+        href="#contact"
+        className="text-gray-400 hover:text-white transition-colors"
+      >
+        Contact
+      </a>
+    </div>
+
+    {/* Kanan */}
+    <div className="text-center md:text-right">
+      <p className="text-[#646464] text-sm">
+        © 2026 Daffa Ravi
+      </p>
+
+      <p className="text-[#646464] text-xs mt-1">
+        Built with Next.js & Tailwind CSS
+      </p>
+    </div>
+
+  </div>
+</footer>
 
 </>
 ) : (
