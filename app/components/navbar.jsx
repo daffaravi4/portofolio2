@@ -9,7 +9,7 @@ export default function Navbar() {
 
       {/* Logo */}
       <h1 className={`${michroma.className} text-xl md:text-2xl text-[#D1D5DB]`}>
-  DAFFA
+  Dev.
 </h1>
 
       {/* Desktop & Tablet Menu */}
