@@ -90,11 +90,11 @@ const foldCompletedRef = useRef(false);
             
 
               <div className="flex items-center gap-3 mb-6" >
-              <h1 className="text-2xl text-white font-bold" >I`m Ready For </h1>
+              <h1 className="text-2xl text-white" >I`m Ready For </h1>
       
               <RotatingText 
               
-               texts={['Web Development', 'Web Design', 'AI Developer', 'Web Programming']}
+               texts={['Web Development', 'UI/UX Design', 'Artificial Intelligence', 'Software Development']}
   mainClassName={`${michroma.className} px-2 sm:px-2 md:px-3 bg-[#696969] text-white overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-xl sm:text-2xl font-bold inline-flex`}
   staggerFrom="last"
   initial={{ y: "100%" }}
@@ -114,7 +114,7 @@ const foldCompletedRef = useRef(false);
               <div className="flex flex-col items-start">
  <SplitText
   text="Hello, I'm DAFFA RAVI FERDIANSYAH"
-  className={`${michroma.className} text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-left text-[#FFFFFF] leading-[1.15] lg:leading-tight break-words`}
+  className={`${michroma.className} text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-left text-[#FFFFFF] leading-[1.15] lg:leading-tight break-words`}
   delay={50}
   duration={1.25}
   ease="power3.out"

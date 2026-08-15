@@ -130,7 +130,7 @@ const FOLD_TEXT_STYLES = `.fold-text {
 `;
 
 const FoldText = ({
-  text = 'WELCOME\nTO\nMY PORTOFOLIO\nWEBSITE', onComplete,
+  text = 'DAFFA', onComplete,
   splitBy = 'line',
   hinge = 'top',
   duration = 0.65,
