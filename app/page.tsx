@@ -9,7 +9,6 @@ import RotatingText from "./components/RotatingText";
 import SplitText from "./components/SplitText";
 import BlurText from "./components/BlurText";
 import Navbar from "./components/navbar.jsx";
-import ProfileCard from "./components/ProfileCard";
 import { michroma, inter } from "@/app/font";
 import Skills from "./components/Skills";
 import Certificates from "./components/Certificates";
@@ -178,32 +177,8 @@ const foldCompletedRef = useRef(false);
 >
   <div className="w-full max-w-7xl lg:max-w-[1550px] mx-auto">
 
-    <div className="grid grid-cols-1 lg:grid-cols-[460px_minmax(0,1fr)] gap-10 lg:gap-20 items-center">
+    <div className="flex items-center">
 
-      {/* Left - FOTO */}
-      <div className="flex justify-center lg:justify-start items-center translate-x-4 lg:translate-x-0">
-  <div className="w-[280px] sm:w-[320px] lg:w-[460px] rounded-3xl">
-
-          <ProfileCard
-            name=""
-            title=""
-            handle="javicodes"
-            status="Online"
-            contactText="Contact Me"
-            avatarUrl="/assets/lanyard/about/dappa4.jpeg"
-            miniAvatarUrl="/assets/lanyard/dappa.jpeg"
-            showUserInfo={false}
-            enableTilt={true}
-            enableMobileTilt={false}
-            behindGlowColor="rgba(125,190,255,0.67)"
-            behindGlowSize="50%"
-            iconUrl="/assets/lanyard/iconpattern.png"
-            behindGlowEnabled={true}
-            innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
-          />
-
-        </div>
-      </div>
 
       {/* Right - ABOUT */}
       <div className="flex flex-col justify-center min-w-0">
