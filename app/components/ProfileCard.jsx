@@ -349,7 +349,7 @@ const ProfileCardComponent = ({
     maskMode: 'luminance',
     maskRepeat: 'repeat',
     maskSize: '150%',
-    maskPosition: 'top calc(200% - (var(--background-y) * 5)) left calc(100% - var(--background-x))',
+    maskPosition: 'top calc(170% - (var(--background-y) * 5)) left calc(100% - var(--background-x))',
     filter: 'brightness(0.66) contrast(1.33) saturate(0.33) opacity(0.5)',
     animation: 'pc-holo-bg 18s linear infinite',
     animationPlayState: 'running',
@@ -383,7 +383,7 @@ const ProfileCardComponent = ({
         #0e152e 12%
       ),
       radial-gradient(
-        farthest-corner circle at var(--pointer-x) var(--pointer-y),
+        farthest-corner circle at var(--pointer-x) calc(var(--pointer-y) - 40%),
         hsla(0, 0%, 0%, 0.1) 12%,
         hsla(0, 0%, 0%, 0.15) 20%,
         hsla(0, 0%, 0%, 0.25) 120%
@@ -395,21 +395,22 @@ const ProfileCardComponent = ({
   };
 
   const glareStyle = {
-    transform: 'translate3d(0, 0, 1.1px)',
-    overflow: 'hidden',
-    backgroundImage: `radial-gradient(
-  farthest-corner circle at var(--pointer-x) var(--pointer-y),
-  rgba(255,255,255,0.35) 10%,
-  rgba(66,66,66,0.85) 55%,
-  rgba(66,66,66,0) 100%
-)`,
-    mixBlendMode: 'overlay',
-    filter: 'brightness(0.8) contrast(1.2)',
-    zIndex: 4,
-    gridArea: '1 / -1',
-    borderRadius: cardRadius,
-    pointerEvents: 'none'
-  };
+  transform: 'translate3d(0, 0, 1.1px)',
+  overflow: 'hidden',
+  backgroundImage: `radial-gradient(
+    circle at var(--pointer-x) var(--pointer-y),
+    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.20) 12%,
+    rgba(255,255,255,0.06) 25%,
+    rgba(255,255,255,0) 45%
+  )`,
+  mixBlendMode: 'screen',
+  filter: 'none',
+  zIndex: 4,
+  gridArea: '1 / -1',
+  borderRadius: cardRadius,
+  pointerEvents: 'none'
+};
 
   return (
     <div
@@ -466,16 +467,16 @@ const ProfileCardComponent = ({
             }}
           >
             {/* Shine layer */}
-            <div style={shineStyle} />
+            {/* <div style={shineStyle} /> */}
 
             {/* Glare layer */}
-            <div style={glareStyle} />
+            {/* <div style={glareStyle} /> */}
 
             {/* Avatar content */}
             <div
               className="overflow-visible backface-hidden"
               style={{
-                mixBlendMode: 'luminosity',
+                mixBlendMode: 'normal',
                 transform: 'translateZ(2px)',
                 gridArea: '1 / -1',
                 borderRadius: cardRadius,
@@ -490,7 +491,7 @@ const ProfileCardComponent = ({
                 style={{
                   transformOrigin: '50% 100%',
                   transform:
-                    'translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))',
+                    'translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateY(70px) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01))',
                   borderRadius: cardRadius
                 }}
                 onError={e => {
