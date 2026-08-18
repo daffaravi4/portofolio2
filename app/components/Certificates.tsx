@@ -29,6 +29,14 @@ const certificates = [
     image: "/assets/lanyard/certificates/KIRO.png",
     credential: "",
   },
+  {
+    title: "Belajar Mechine Learning",
+    provider: "Dicoding",
+    category: "Machine Learning",
+    year: "2026",
+    image: "/assets/lanyard/certificates/Machine_Learning.png",
+    credential: "",
+  },
 ];
 
 export default function Certificates() {
