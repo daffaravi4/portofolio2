@@ -6,47 +6,63 @@ import { X, ExternalLink, ArrowUpRight, Plus } from "lucide-react";
 import { michroma, inter } from "@/app/font";
 const projects = [
   {
-    title: "Car Store — Automotive E-Commerce UI/UX",
+    title: "NØRVA — Technology for Your Everyday",
     description:
-      "A modern car store website concept designed in Figma, featuring a premium automotive interface for browsing vehicles, viewing detailed car information, and completing a structured checkout and payment process. The design focuses on clean layouts, intuitive navigation, responsive interfaces, and a seamless user experience from product selection to payment.",
+      "A modern technology e-commerce website designed with a clean and immersive interface, featuring product discovery, curated collections, product details, shopping cart, and a seamless checkout experience. The design focuses on modern visuals, intuitive navigation, and a premium user experience across desktop and mobile devices.",
     category: "UI/UX DESIGN",
     year: "2026",
-    image: "/assets/lanyard/projects/car-store.png",
+    images: [
+  "/assets/lanyard/projects/ecommerce-figma.png",
+  "/assets/lanyard/projects/car-store-2.png",
+  "/assets/lanyard/projects/car-store-3.png",
+],
     tech: [],
     demo: "https://www.figma.com/design/o9NIAvFYMGHta8JD9wfTaY/Untitled?node-id=0-1&m=dev&t=Sy01OyfbdQ9eqZu7-1",
     github: "",
   },
   {
-    title: "Coming Soon",
+    title: "Smart Property AI — Property Price Prediction",
     description:
-      "A new project is currently being developed and will be showcased here.",
-    category: "PROJECT",
+      "An AI-powered property price prediction platform that estimates property values based on location, land area, building area, number of bedrooms, bathrooms, property type, and property condition. The system uses a Machine Learning model with a FastAPI backend and a Next.js frontend.",
+    category: "AI / MACHINE LEARNING",
     year: "2026",
-    image: "",
+    images: [
+  "/assets/lanyard/projects/beranda.png",
+  "/assets/lanyard/projects/prdiksi.png",
+  "/assets/lanyard/projects/estimasi.png",
+],
     tech: [],
     demo: "",
     github: "",
   },
   {
-    title: "Coming Soon",
+    title: "AI AGENT",
     description:
-      "A new project is currently being developed and will be showcased here.",
-    category: "PROJECT",
+      "An AI-powered coding agent designed to assist with software development tasks. DAFFA AI can understand coding instructions, create and edit files, read project files, execute commands, and automatically detect and repair code errors using an AI-powered agent loop.",
+    category: "AI / DEVELOPER TOOLS",
     year: "2026",
-    image: "",
+    images: [
+  "/assets/lanyard/projects/awal.png",
+  "/assets/lanyard/projects/hasil.png",
+  "/assets/lanyard/projects/.png",
+],
     tech: [],
     demo: "",
     github: "",
   },
   {
-    title: "Coming Soon",
+    title: "VANTERRA RESOURCES",
     description:
-      "A new project is currently being developed and will be showcased here.",
-    category: "PROJECT",
+      "A modern mining and energy company website featuring operations, projects, equipment, sustainability, news, and an interactive admin dashboard.",
+    category: "Frontend Web Development",
     year: "2026",
-    image: "",
+    images: [
+  "/assets/lanyard/projects/pertama.png",
+  "/assets/lanyard/projects/kedua.png",
+  "/assets/lanyard/projects/ketiga.png",
+],
     tech: [],
-    demo: "",
+    demo: "https://vanterra-resources.vercel.app/",
     github: "",
   },
 ];
@@ -56,7 +72,9 @@ export default function Projects() {
   (typeof projects)[0] | null
 >(null);
 
+
 const [isClosing, setIsClosing] = useState(false);
+const [selectedImage, setSelectedImage] = useState(0);
 
 const closeModal = () => {
   setIsClosing(true);
@@ -98,7 +116,10 @@ const closeModal = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                onClick={() => setSelected(project)}
+                onClick={() => {
+  setSelected(project);
+  setSelectedImage(0);
+}}
                 className="
                   group cursor-pointer overflow-hidden
                   rounded-2xl
@@ -119,10 +140,10 @@ const closeModal = () => {
                     bg-black/30
                   "
                 >
-                  {project.image ? (
+                  {project.images?.[0] ? (
                     <>
                       <Image
-                        src={project.image}
+                        src={project.images[0]}
                         alt={project.title}
                         fill
                         className="
@@ -218,25 +239,22 @@ const closeModal = () => {
                 <div className="p-6">
 
                   {/* Category */}
-                  <div className="mb-2 flex items-center justify-between">
-                    <p className="text-xs uppercase tracking-[0.25em] text-gray-500">
-                      {project.category}
-                    </p>
-
-                    <span className="text-xs text-gray-600">
-                      {project.year}
-                    </span>
-                  </div>
-
+<div className="mb-2 flex items-center justify-between">
+  <p
+    className={`${michroma.className} text-xs uppercase tracking-[0.25em] text-white`}
+  >
+    {project.category}
+  </p>
+</div>
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-white">
-                    {project.title}
-                  </h3>
+<h3 className={`${michroma.className} text-lg leading-relaxed text-white md:text-xl`}>
+  {project.title}
+</h3>
 
-                  {/* Description */}
-                  <p className="mt-3 line-clamp-2 text-sm leading-6 text-gray-400">
-                    {project.description}
-                  </p>
+{/* Description */}
+<p className="mt-3 line-clamp-2 text-sm leading-6 text-gray-400">
+  {project.description}
+</p>
 
                   {/* Tech */}
                   <div className="mt-5 flex min-h-[24px] flex-wrap gap-2">
@@ -320,13 +338,13 @@ const closeModal = () => {
                 bg-black/40
               "
             >
-              {selected.image ? (
-                <Image
-                  src={selected.image}
-                  alt={selected.title}
-                  fill
-                  className="object-contain"
-                />
+              {selected.images?.[selectedImage] ? (
+  <Image
+    src={selected.images[selectedImage]}
+    alt={selected.title}
+    fill
+    className="object-contain"
+  />
               ) : (
                 <div
                   className="
@@ -345,6 +363,38 @@ const closeModal = () => {
               )}
             </div>
 
+          {/* Project Gallery */}
+{selected.images && selected.images.length > 1 && (
+  <div className="mt-4 grid grid-cols-3 gap-3">
+    {selected.images.map((image, index) => (
+      <button
+        key={image}
+        onClick={() => setSelectedImage(index)}
+        className={`
+          relative aspect-video overflow-hidden rounded-lg
+          border transition-all duration-300
+          ${
+            selectedImage === index
+              ? "border-white ring-2 ring-white/30"
+              : "border-white/10 hover:border-white/30"
+          }
+        `}
+      >
+        <Image
+          src={image}
+          alt={`${selected.title} - ${index + 1}`}
+          fill
+          className="object-cover transition-transform duration-300 hover:scale-105"
+        />
+
+        {/* Overlay */}
+        {selectedImage === index && (
+          <div className="absolute inset-0 bg-white/10" />
+        )}
+      </button>
+    ))}
+  </div>
+)}
             {/* Info */}
             <div className="mt-7 border-t border-white/10 pt-6">
 

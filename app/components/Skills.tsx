@@ -29,55 +29,63 @@ const skillCategories = [
   {
     title: "Frontend",
     skills: [
-      { name: "HTML5", icon: SiHtml5,},
-      { name: "CSS3", icon: FaCss3Alt,},
-      { name: "JavaScript", icon: SiJavascript,},
-      { name: "TypeScript", icon: SiTypescript,},
-      { name: "React", icon: SiReact,},
-      { name: "Next.js", icon: SiNextdotjs,},
-      { name: "Tailwind CSS", icon: SiTailwindcss,},
+      { name: "HTML5", icon: SiHtml5 },
+      { name: "CSS3", icon: FaCss3Alt },
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "React", icon: SiReact },
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
     ],
   },
+
   {
     title: "Backend",
     skills: [
-      { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
+      { name: "Python", icon: SiPython, color: "#3776AB" },
+      { name: "Flask", icon: FaServer, color: "#FFFFFF" },
+      { name: "FastAPI", icon: FaServer, color: "#009688" },
       { name: "REST API", icon: FaServer, color: "#38BDF8" },
-      { name: "PHP", icon: SiPhp, color: "#777BB4" },
     ],
   },
+
   {
-    title: "Database",
+    title: "Database & Storage",
     skills: [
       { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+      { name: "LocalStorage", icon: FaServer, color: "#FFFFFF" },
     ],
   },
+
   {
     title: "Programming",
     skills: [
       { name: "Python", icon: SiPython, color: "#3776AB" },
+      { name: "JavaScript", icon: SiJavascript },
       { name: "Java", icon: FaJava, color: "#EA2D2E" },
     ],
   },
+
   {
     title: "AI & Computer Vision",
     skills: [
+      { name: "OpenCV", icon: FaServer, color: "#5C3EE8" },
       { name: "MediaPipe", icon: FaServer, color: "#00C853" },
       { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
+      { name: "Ollama", icon: FaServer, color: "#FFFFFF" },
     ],
   },
-  {
-    title: "Tools",
-    skills: [
-      { name: "Git", icon: SiGit, color: "#F05032" },
-      { name: "GitHub", icon: SiGithub, color: "#FFFFFF" },
-      { name: "VS Code", icon: VscCode, color: "#007ACC" },
-      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-    ],
-  },
+
+    {
+  title: "Tools",
+  skills: [
+    { name: "Git", icon: SiGit, color: "#F05032" },
+    { name: "GitHub", icon: SiGithub, color: "#FFFFFF" },
+    { name: "VS Code", icon: VscCode, color: "#007ACC" },
+    { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+    { name: "Vercel", icon: FaServer, color: "#FFFFFF" },
+  ],
+},
 ];
 
 type SkillBadgeProps = {
