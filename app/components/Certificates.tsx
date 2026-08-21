@@ -37,6 +37,38 @@ const certificates = [
     image: "/assets/lanyard/certificates/Machine_Learning.png",
     credential: "",
   },
+  {
+    title: "Data Science",
+    provider: "Microsoft Elevate",
+    category: "Data Science",
+    year: "2026",
+    image: "/assets/lanyard/certificates/data_science.jpg",
+    credential: "",
+  },
+  {
+    title: "Membangun Aplikasi Gen AI Dengan Microsoft Azure",
+    provider: "Dicoding Indonesia",
+    category: "Artificial Intelligence / Generative AI",
+    year: "2026",
+    image: "/assets/lanyard/certificates/membangun_aplikasi_ai.png",
+    credential: "",
+  },
+  {
+    title: "Belajar Dasar AI",
+    provider: "Dicoding Indonesia",
+    category: "AI / Machine Learning / Deep Learning",
+    year: "2026",
+    image: "/assets/lanyard/certificates/DASAR_AI.png",
+    credential: "",
+  },
+  {
+    title: "Introduction to Financial Literacy",
+    provider: "Dicoding Indonesia",
+    category: "Financial Literacy",
+    year: "2026",
+    image: "/assets/lanyard/certificates/financial_literacy.png",
+    credential: "",
+  },
 ];
 
 export default function Certificates() {
