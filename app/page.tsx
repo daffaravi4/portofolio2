@@ -15,6 +15,7 @@ import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import dynamic from "next/dynamic";
+import Beams from "./components/Beams";
 
 const FoldText = dynamic(() => import("./components/FoldText"), {
   ssr: false,
@@ -27,12 +28,10 @@ const foldCompletedRef = useRef(false);
 
   return (
     <>
-      {/* SHAPE GRID - BACKGROUND */}
+     {/* BEAMS BACKGROUND */}
 <div className="fixed inset-0 -z-20">
-  <ShapeGrid />
+  <Beams />
 </div>
-
-      
   
 {/* FOLD TEXT INTRO */}
 {showFoldText && (
